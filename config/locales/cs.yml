@@ -1,0 +1,16 @@
+cs:
+
+  headers:
+    homepage:
+      index: Homepage
+    admin:
+      dashboard:
+        index: Dashboard
+      
+  activerecord:
+    attributes:
+      
+    notices:
+      models:
+    errors:
+      models:

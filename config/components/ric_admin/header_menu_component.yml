@@ -1,0 +1,12 @@
+items:
+  -
+    label: headers.ric_user.admin_users.index
+    url: ric_user_admin.users_path
+    icon: user
+    active_if: "controller_name == 'admin_users'"
+  -
+    type: delimiter
+  -
+    label: headers.web
+    url: main_app.root_path
+    icon: globe
