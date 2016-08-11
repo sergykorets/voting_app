@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  votable_from: 2016-08-05
+  votable_to: 2016-08-05
+  invitation_sent_at: 2016-08-05 17:52:56
+  results_sent_at: 2016-08-05 17:52:56
+
+two:
+  name: MyString
+  votable_from: 2016-08-05
+  votable_to: 2016-08-05
+  invitation_sent_at: 2016-08-05 17:52:56
+  results_sent_at: 2016-08-05 17:52:56

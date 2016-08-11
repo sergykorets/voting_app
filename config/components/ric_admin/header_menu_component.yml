@@ -1,12 +1,20 @@
 items:
   -
-    label: headers.ric_user.admin_users.index
-    url: ric_user_admin.users_path
+    label: headers.admin.candidates
+    url: main_app.admin_candidates_path
     icon: user
-    active_if: "controller_name == 'admin_users'"
+    active_if: "controller_name == 'admin_candidates'"
   -
     type: delimiter
   -
-    label: headers.web
-    url: main_app.root_path
+    label: headers.admin.candidate_participation
+    url: main_app.admin_candidate_participations_path
     icon: globe
+    active_if: "controller_name == 'admin_candidate_participations'"
+  -
+    type: delimiter
+  -
+    label: headers.admin.election_part
+    url: main_app.admin_election_parts_path
+    icon: globe
+    active_if: "controller_name == 'admin_election_parts'"

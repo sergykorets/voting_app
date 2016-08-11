@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
 	# Root
 	root "homepage#index"
-
+	resources :election_parts
+	resources :candidate_participations
+	resources :candidates
 	#
 	# RicDevise
 	#
@@ -41,7 +43,27 @@ Rails.application.routes.draw do
 
 		# Root
 		root "dashboard#index"
-		
+
+		resources :election_parts do 
+			collection do
+					post "filter"
+					get "search"
+			end
+		end
+		resources :candidate_participations do 
+			collection do
+					post "filter"
+					get "search"
+			end
+		end
+		resources :candidates do 
+			collection do
+					post "filter"
+					get "search"
+			end
+		end
 	end
+
+
 
 end

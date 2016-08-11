@@ -1,2 +1,44 @@
 en:
-  hello: "Hello world"
+
+  headers:
+    homepage:
+      index: Homepage
+    admin:
+      dashboard:
+        index: Dashboard
+      candidates: Candidates
+      election_part: Election parts
+      candidate_participation: Participations
+    ric_account:
+      account:
+        password: Password
+        user: User  
+  activerecord:
+    attributes:
+      
+  notices:
+    models:
+  errors:
+    models:
+
+  devise:
+    action:
+      sign_in: Sign in
+      sign_out: Sign out
+
+  general:
+    attribute:
+      name:
+        firstname: Firstname
+        lastname: Lastname
+    drop_file_here: Drop file
+    action:
+      index: Candidates
+      new: New
+      sort: Sort
+      show: Votes
+    back: Back
+    shown: Displayed  
+  helpers:
+    submit:
+      filter: Filter  

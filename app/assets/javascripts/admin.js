@@ -20,5 +20,4 @@
 
 // ClockPicker
 //= require clockpicker/clockpicker
-
 //= require ric_admin

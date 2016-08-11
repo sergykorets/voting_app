@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  candidate_id: 
+  votes: 1
+  description: MyText
+  visions: MyText
+
+two:
+  candidate_id: 
+  votes: 1
+  description: MyText
+  visions: MyText

@@ -12,6 +12,7 @@
 class HomepageController < ApplicationController
 
 	def index
+		@candidate_participations = CandidateParticipation.all
 	end
 
 end

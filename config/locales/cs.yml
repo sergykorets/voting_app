@@ -10,7 +10,11 @@ cs:
   activerecord:
     attributes:
       
-    notices:
-      models:
-    errors:
-      models:
+  notices:
+    models:
+  errors:
+    models:
+
+  devise:
+    action:
+      sign_in: Sign in

@@ -1,0 +1,6 @@
+<%= rug_form_for(@election_part, create_url: "main_app.admin_election_parts_path", update_url: "main_app.admin_election_part_path") do |f| %>
+	<%= f.text_input_row(:name) %>
+	<%= f.text_input_row(:max_votes_for_candidate, :number_field) %>
+	<%= f.primary_button_row :submit %>
+	<%= f.back_link_button_row %>
+<% end %>

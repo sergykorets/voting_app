@@ -7,8 +7,10 @@
 	<%= javascript_include_tag 'application' %>
 	<%= csrf_meta_tags %>
 </head>
-<body class="">
+<body class="container">
 	<%= render partial: "layouts/application/flash" %>
-	<%= yield %>
+	<div id="container" class="col-md-12 center-block">
+		<%= yield %>
+	</div>	
 </body>
 </html>

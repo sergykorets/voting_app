@@ -1,0 +1,13 @@
+<%= render layout: "ric_admin/layouts/default" do %>
+	<%= rug_index_table_for(@candidate_participations, { 
+		votes: :integer,
+		description: :text,
+		visions: :text,
+		candidate: { type: :belongs_to, label: :name, path: "main_app.admin_candidates_path" },
+		election_part: { type: :belongs_to, label: :name, path: "main_app.admin_election_parts_path" }
+	}, paths: {
+		new: "main_app.new_admin_candidate_participation_path", 
+		edit: "main_app.edit_admin_candidate_participation_path", 
+		destroy: "main_app.admin_candidate_participation_path"
+	}, sorting: true, pagination: true, summary: true ) %>
+<% end %>
