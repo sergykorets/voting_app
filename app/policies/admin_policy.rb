@@ -2,17 +2,17 @@
 # * Copyright (c) Clockstar s.r.o. All rights reserved.
 # *****************************************************************************
 # *
-# * Permission policy form voter
+# * Permission policy form admin
 # *
 # * Author: Matěj Outlý
 # * Date  : 12. 7. 2016
 # *
 # *****************************************************************************
 
-class VoterPolicy < Struct.new(:user, :voter)
+class AdminPolicy < Struct.new(:user, :admin)
 	
 	def show?
-		return !user.nil? && (user.role == "voter" || user.role == "admin")
+		return !user.nil? && (user.role == "admin")
 	end
 
 end

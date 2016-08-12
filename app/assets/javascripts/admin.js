@@ -5,6 +5,10 @@
 // Bootstrap
 //= require bootstrap-sprockets
 
+// TinyMCE
+//= require tinymce/tinymce
+//= require ./libraries/tinymce
+
 // Moment
 //= require moment
 
@@ -20,4 +24,5 @@
 
 // ClockPicker
 //= require clockpicker/clockpicker
+
 //= require ric_admin

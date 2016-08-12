@@ -1,7 +1,8 @@
-<%= rug_menu_for(@candidate_participation, name: "actions", path_base: "main_app.admin_candidate_participation") do |m| %>
-	<%= m.index_item %>
-	<%= m.new_item %>
-	<%= m.show_item %>
-	<%= m.edit_item %>
-	<%= m.destroy_item %>
+<%= rug_menu_for(@candidate_participation, name: "actions") do |m| %>
+	<%= m.new_item nil, main_app.new_admin_candidate_candidate_participation_path(@candidate) %>
+	<% if @candidate_participation && !@candidate_participation.new_record? %>
+		<%= m.show_item nil, main_app.admin_candidate_candidate_participation_path(@candidate, @candidate_participation) %>
+		<%= m.edit_item nil, main_app.edit_admin_candidate_candidate_participation_path(@candidate, @candidate_participation) %>
+		<%= m.destroy_item nil, main_app.admin_candidate_candidate_participation_path(@candidate, @candidate_participation) %>
+	<% end %>
 <% end %>

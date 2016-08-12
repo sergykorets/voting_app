@@ -14,67 +14,27 @@ class Vote < ActiveRecord::Base
 	# *************************************************************************
 	# Structure
 	# *************************************************************************
+	
 	belongs_to :candidate
 	belongs_to :voter
 	belongs_to :election_part
+	
 	# *************************************************************************
 	# Validators
 	# *************************************************************************
 	
-	# *************************************************************************
-	# Scopes
-	# *************************************************************************
+	validates_presence_of :candidate_id, :voter_id, :election_part_id
 
-	#
-	# Filter
-	#
-	def self.filter(params)
-		
-		# Preset
-		result = all
-
-		# Name
-		if !params[:name].blank?
-			result = result.where("lower(unaccent(name)) LIKE ('%' || lower(unaccent(trim(?))) || '%')", params[:name].to_s)
-		end
-
-		result
-	end
-
-	#
-	# Search
-	#
-	def self.search(query)
-		if query.blank?
-			all
-		else
-			where("
-				(lower(unaccent(name)) LIKE ('%' || lower(unaccent(trim(:query))) || '%'))
-			", query: query.to_s)
-		end
-	end
-
-	# *************************************************************************
-	# Enums
-	# *************************************************************************
-
-	# *************************************************************************
-	# Virtual attributes
-	# *************************************************************************
-
-	# *************************************************************************
-	# Callbacks
-	# *************************************************************************
-	
 	# *************************************************************************
 	# Columns
 	# *************************************************************************
 	
-	#
-	# Get all columns permitted for editation
-	#
 	def self.permitted_columns
-		[]
+		[
+			:candidate_id, 
+			:voter_id, 
+			:election_part_id
+		]
 	end
 
 end

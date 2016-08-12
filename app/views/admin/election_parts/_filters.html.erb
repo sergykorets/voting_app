@@ -1,6 +1,0 @@
-<% if action_name == "index" %>
-	<%= rug_form_for(@filter_election_part, url: main_app.filter_admin_election_parts_path) do |f| %>
-		<%= f.text_input_row :name, :text_field, label: ElectionPart.human_attribute_name("name")  %>
-		<%= f.primary_button_row :submit, label: t("helpers.submit.filter") %>
-	<% end %>
-<% end %>

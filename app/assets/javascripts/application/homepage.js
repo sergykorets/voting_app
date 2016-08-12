@@ -9,11 +9,11 @@ $(document).ready(function() {
 		console.log($content);
 		$content.toggleClass("showContent");
 
-		if(linkText === "More"){
-			linkText = "More";
+		if(linkText === "MORE"){
+			linkText = "Less";
 
 		} else {
-			linkText = "Less";
+			linkText = "More";
 		};
 
 		$this.text(linkText);

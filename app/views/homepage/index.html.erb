@@ -1,63 +1,9 @@
-<style type="text/css">
-	div.text-container {
-			margin: 0 auto;
-			width: 75%;    
-	}
-	.content {
-		max-height: 0;
-		overflow: hidden;
-		-webkit-transition: max-height 0.8s;
-		-moz-transition: max-height 0.8s;
-		transition: max-height 0.8s;
-	}
-	.showContent {
-		max-height: 1000px;
-	}
-	.show-more {
-		padding: 10px 0;
-		text-align: left;
-		margin-left: 1.5%;
-	}
-	.lead {
-	  	padding-left: 5%;
-	}
-	.featurette-heading {
-		padding-left: 5%;
-	}
-	.year {
-		padding-left: 6.5%;
-	}
-</style>
-<script type="text/javascript">
-	$(document).ready(function() {
-		console.log( "ready!" );
-		$(".show-more button").on("click", function() {
-			var $this = $(this);
-			console.log($this);
-			var $content = $this.parent().prev("div.content");
-			var linkText = $this.text().toUpperCase();
 
-			console.log($content);
-			$content.toggleClass("showContent");
-
-			if(linkText === "MORE"){
-				linkText = "Less";
-
-			} else {
-				linkText = "More";
-			};
-
-			$this.text(linkText);
-		});
-	});
-</script>
 <div id="masthead">  
 	<div class="container">
 		<div class="row">
 			<div class="col-md-7">
-				<h1><%= t("headers.homepage.index") %>
-					<p class="lead">Známost</p>
-				</h1>
+				<h1><%= t("headers.homepage.index") %></h1>
 			</div>
 		</div> 
 	</div>

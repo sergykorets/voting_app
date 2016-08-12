@@ -1,0 +1,16 @@
+- :id and :created_at should NOT be in permitted columns
+- has_many should define dependent: :destroy of dependent: :nullify
+- Do not use t.reference in migrations, use t.integer :something_id, index: true instead. This prevents problems with DB dump loading (t.reference creates foreign keys between tables and table dumps must be loaded in correct order, which is complicated)
+- Define DB indexes for columns which are used in WHERE and ORDER statements (and references to other tables of course). In migration index: true of add_index can be used
+- In standard portal we do not use login column for users. E-mail is enough
+- Don't forget to define validators for required columns, refernces, etc.: validates_presence_of
+- voters x elections is n:m reference - requires new table elections_voters and using of has_and_belongs to many
+- Filter and search functionality is defined only for "high level" models like candidates, voters and elections, not for votes, participations and other stuff
+- Attachment can be defined with 300x300# style. Hash sign means that picture is cropped to this exact size
+- Layout with right side shoul'd be user also for index actions
+- Primary order column should be specified in controller for search and filter actions
+- For filters to be working DB extension unaccent must be enabled (migrations)
+- show table type :picture must be defined with thumb_style option (generators are not allmighty)
+- We need to define election model for election parts - definition of votable dates, etc.
+- check <div> </div> pairing when copying some code
+- there is nothing like :references type defined for show/index table

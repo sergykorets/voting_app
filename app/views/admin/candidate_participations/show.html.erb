@@ -1,9 +1,10 @@
 <%= render layout: "ric_admin/layouts/with_right_side" do %>
 	<%= rug_show_table_for(@candidate_participation, { 
+		candidate: { type: :belongs_to, label: :name_formatted, path: "main_app.admin_candidate_path" },	
+		election_part: { type: :belongs_to, label: :name_with_election, path: lambda { |election_part| main_app.admin_election_election_part_path(election_part.election_id, election_part) } },
+		created_at: :date,
 		votes: :integer,
 		description: :text,
 		visions: :text,
-		candidate: :references,
-		election_part: :references
 	}) %>
 <% end %>

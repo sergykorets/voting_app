@@ -2,26 +2,26 @@
 # * Copyright (c) Clockstar s.r.o. All rights reserved.
 # *****************************************************************************
 # *
-# * Candidates
+# * Elections
 # *
 # * Author: 
-# * Date  : 10. 8. 2016
+# * Date  : 12. 8. 2016
 # *
 # *****************************************************************************
 
-class Admin::CandidatesController < AdminController
+class Admin::ElectionsController < AdminController
 
-	before_action :set_candidate, only: [:show, :edit, :update, :destroy]
+	before_action :set_election, only: [:show, :edit, :update, :destroy]
 
 	#
 	# Index action
 	#
 	def index
-		@filter_candidate = Candidate.new(load_params_from_session)
-		@candidates = Candidate.filter(load_params_from_session.symbolize_keys).sorting(params[:sort], "name_lastname ASC").page(params[:page]).per(50)
+		@filter_election = Election.new(load_params_from_session)
+		@elections = Election.filter(load_params_from_session.symbolize_keys).sorting(params[:sort], "created_at ASC").page(params[:page]).per(50)
 		respond_to do |format|
 			format.html { render "index" }
-			format.json { render json: @candidates.to_json }
+			format.json { render json: @elections.to_json }
 		end
 	end
 
@@ -30,17 +30,17 @@ class Admin::CandidatesController < AdminController
 	#
 	def filter
 		save_params_to_session(filter_params)
-		redirect_to main_app.admin_candidates_path
+		redirect_to main_app.admin_elections_path
 	end
 
 	#
 	# Search action
 	#
 	def search
-		@candidates = Candidate.search(params[:q]).order(name_lastname: :asc)
+		@elections = Election.search(params[:q]).order(created_at: :asc)
 		respond_to do |format|
 			format.html { render "index" }
-			format.json { render json: @candidates.to_json }
+			format.json { render json: @elections.to_json }
 		end
 	end
 
@@ -50,7 +50,7 @@ class Admin::CandidatesController < AdminController
 	def show
 		respond_to do |format|
 			format.html { render "show" }
-			format.json { render json: @candidate.to_json }
+			format.json { render json: @election.to_json }
 		end
 	end
 
@@ -58,7 +58,7 @@ class Admin::CandidatesController < AdminController
 	# New action
 	#
 	def new
-		@candidate = Candidate.new
+		@election = Election.new
 	end
 
 	#
@@ -71,16 +71,16 @@ class Admin::CandidatesController < AdminController
 	# Create action
 	#
 	def create
-		@candidate = Candidate.new(candidate_params)
-		if @candidate.save
+		@election = Election.new(election_params)
+		if @election.save
 			respond_to do |format|
-				format.html { redirect_to main_app.admin_candidate_path(@candidate), notice: I18n.t("activerecord.notices.models.candidate.create") }
-				format.json { render json: @candidate.id }
+				format.html { redirect_to main_app.admin_election_path(@election), notice: I18n.t("activerecord.notices.models.election.create") }
+				format.json { render json: @election.id }
 			end
 		else
 			respond_to do |format|
 				format.html { render "new" }
-				format.json { render json: @candidate.errors }
+				format.json { render json: @election.errors }
 			end
 		end
 	end
@@ -89,15 +89,15 @@ class Admin::CandidatesController < AdminController
 	# Update action
 	#
 	def update
-		if @candidate.update(candidate_params)
+		if @election.update(election_params)
 			respond_to do |format|
-				format.html { redirect_to main_app.admin_candidate_path(@candidate), notice: I18n.t("activerecord.notices.models.candidate.update") }
-				format.json { render json: @candidate.id }
+				format.html { redirect_to main_app.admin_election_path(@election), notice: I18n.t("activerecord.notices.models.election.update") }
+				format.json { render json: @election.id }
 			end
 		else
 			respond_to do |format|
 				format.html { render "edit" }
-				format.json { render json: @candidate.errors }
+				format.json { render json: @election.errors }
 			end
 		end
 	end
@@ -106,10 +106,10 @@ class Admin::CandidatesController < AdminController
 	# Destroy action
 	#
 	def destroy
-		@candidate.destroy
+		@election.destroy
 		respond_to do |format|
-			format.html { redirect_to main_app.admin_candidates_path, notice: I18n.t("activerecord.notices.models.candidate.destroy") }
-			format.json { render json: @candidate.id }
+			format.html { redirect_to main_app.admin_elections_path, notice: I18n.t("activerecord.notices.models.election.destroy") }
+			format.json { render json: @election.id }
 		end
 	end
 
@@ -122,10 +122,10 @@ protected
 	#
 	# Set model
 	#
-	def set_candidate
-		@candidate = Candidate.find_by_id(params[:id])
-		if @candidate.nil?
-			redirect_to main_app.admin_candidates_path, alert: I18n.t("activerecord.errors.models.candidate.not_found")
+	def set_election
+		@election = Election.find_by_id(params[:id])
+		if @election.nil?
+			redirect_to main_app.admin_elections_path, alert: I18n.t("activerecord.errors.models.election.not_found")
 		end
 	end
 
@@ -137,7 +137,7 @@ protected
 	# Get session key unique for the controller
 	#
 	def session_key
-		return "candidates"
+		return "elections"
 	end
 
 	#
@@ -166,15 +166,15 @@ protected
 	# 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	#
-	def candidate_params
-		params.require(:candidate).permit(Candidate.permitted_columns)
+	def election_params
+		params.require(:election).permit(Election.permitted_columns)
 	end
 
 	# 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	#
 	def filter_params
-		return params[:candidate].permit(:name_for_filter)
+		return params[:election].permit(:name)
 	end
 
 end

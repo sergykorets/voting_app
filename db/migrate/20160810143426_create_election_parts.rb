@@ -15,7 +15,6 @@ class CreateElectionParts < ActiveRecord::Migration
 			t.references :election, index: true, foreign_key: true
 			t.string :name
 			t.integer :max_votes_for_candidate
-
 			t.timestamps null: true
 		end
 	end

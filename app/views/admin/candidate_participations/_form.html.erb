@@ -1,10 +1,10 @@
-<%= rug_form_for(@candidate_participation, create_url: "main_app.admin_candidate_participations_path", update_url: "main_app.admin_candidate_participation_path") do |f| %>
-
-	<%= f.text_input_row(:votes, :number_field) %>
-	<%= f.text_area_row(:description) %>
-	<%= f.text_area_row(:visions) %>
-	<%= f.text_input_row :candidate_id, :number_field %>
-	<%= f.text_input_row :election_part_id, :number_field %>
+<%= rug_form_for(@candidate_participation, 
+	create_url: lambda { main_app.admin_candidate_candidate_participations_path(@candidate) }, 
+	update_url: lambda { |candidate_participation| main_app.admin_candidate_candidate_participation_path(@candidate, candidate_participation) }
+) do |f| %>
+	<%= f.token_input_row :election_part_id, main_app.search_admin_election_parts_path, as: :election_part, value_attr: :id, label_attr: :name_with_election, limit: 1 %>
+	<%= f.text_area_row :description %>
+	<%= f.text_area_row :visions %>
 	<%= f.primary_button_row :submit %>
 	<%= f.back_link_button_row %>
 <% end %>

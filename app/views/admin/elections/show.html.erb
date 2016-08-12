@@ -1,0 +1,18 @@
+<%= render layout: "ric_admin/layouts/with_right_side" do %>
+	<%= rug_show_table_for(@election, { 
+		name: :string,
+		votable_from: :date,
+		votable_to: :date,
+		invitation_sent_at: :datetime,
+		results_sent_at: :datetime
+	}) %>
+	<%= rug_index_table_for(@election.election_parts.order(name: :asc), { 
+		name: :string,
+		max_votes_for_candidate: :integer
+	}, paths: {
+		show: lambda { |election_part| main_app.admin_election_election_part_path(@election, election_part) }, 
+		new: lambda { main_app.new_admin_election_election_part_path(@election) }, 
+		edit: lambda { |election_part| main_app.edit_admin_election_election_part_path(@election, election_part) }, 
+		destroy: lambda { |election_part| main_app.admin_election_election_part_path(@election, election_part) }
+	}, summary: true ) %>
+<% end %>

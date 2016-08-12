@@ -1,6 +1,9 @@
-<%= rug_form_for(@election_part, create_url: "main_app.admin_election_parts_path", update_url: "main_app.admin_election_part_path") do |f| %>
-	<%= f.text_input_row(:name) %>
-	<%= f.text_input_row(:max_votes_for_candidate, :number_field) %>
+<%= rug_form_for(@election_part, 
+	create_url: lambda { main_app.admin_election_election_parts_path(@election) }, 
+	update_url: lambda { |election_part| main_app.admin_election_election_part_path(@election, election_part) }
+) do |f| %>
+	<%= f.text_input_row :name %>
+	<%= f.text_input_row :max_votes_for_candidate, :number_field %>
 	<%= f.primary_button_row :submit %>
 	<%= f.back_link_button_row %>
 <% end %>

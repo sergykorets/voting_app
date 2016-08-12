@@ -14,34 +14,20 @@ class ElectionPart < ActiveRecord::Base
 	# *************************************************************************
 	# Structure
 	# *************************************************************************
-	has_many :votes
-	belongs_to :election
-	has_many :candidate_partcipations
-
 	
+	has_many :votes, dependent: :destroy
+	belongs_to :election
+	has_many :candidate_participations, dependent: :destroy
+
 	# *************************************************************************
 	# Validators
 	# *************************************************************************
 	
+	validates_presence_of :election_id
+
 	# *************************************************************************
 	# Scopes
 	# *************************************************************************
-
-	#
-	# Filter
-	#
-	def self.filter(params)
-		
-		# Preset
-		result = all
-
-		# Name
-		if !params[:name].blank?
-			result = result.where("lower(unaccent(name)) LIKE ('%' || lower(unaccent(trim(?))) || '%')", params[:name].to_s)
-		end
-
-		result
-	end
 
 	#
 	# Search
@@ -57,26 +43,24 @@ class ElectionPart < ActiveRecord::Base
 	end
 
 	# *************************************************************************
-	# Enums
-	# *************************************************************************
-
-	# *************************************************************************
-	# Virtual attributes
-	# *************************************************************************
-
-	# *************************************************************************
-	# Callbacks
-	# *************************************************************************
-	
-	# *************************************************************************
 	# Columns
 	# *************************************************************************
 	
-	#
-	# Get all columns permitted for editation
-	#
 	def self.permitted_columns
-		[:created_at, :id, :name, :max_votes_for_candidate]
+		[
+			:name, 
+			:max_votes_for_candidate
+		]
 	end
+
+	# *************************************************************************
+	# Name with election
+	# *************************************************************************
+
+	def name_with_election
+		return self.election.name + " - " + self.name 
+	end
+
+	add_methods_to_json :name_with_election
 
 end

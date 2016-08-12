@@ -14,59 +14,16 @@ class CandidateParticipation < ActiveRecord::Base
 	# *************************************************************************
 	# Structure
 	# *************************************************************************
+	
 	belongs_to :candidate
 	belongs_to :election_part
+	
 	# *************************************************************************
 	# Validators
 	# *************************************************************************
 	
-	# *************************************************************************
-	# Scopes
-	# *************************************************************************
-	
+	validates_presence_of :election_part_id, :candidate_id
 
-
-	#
-	# Filter
-	#
-	def self.filter(params)
-		
-		# Preset
-		result = all
-
-		# Name
-		if !params[:votes].blank?
-			result = result.where("lower(unaccent(votes)) LIKE ('%' || lower(unaccent(trim(?))) || '%')", params[:votes].to_s)
-		end
-
-		result
-	end
-
-	#
-	# Search
-	#
-	def self.search(query)
-		if query.blank?
-			all
-		else
-			where("
-				(lower(unaccent(votes)) LIKE ('%' || lower(unaccent(trim(:query))) || '%'))
-			", query: query.to_s)
-		end
-	end
-
-	# *************************************************************************
-	# Enums
-	# *************************************************************************
-
-	# *************************************************************************
-	# Virtual attributes
-	# *************************************************************************
-
-	# *************************************************************************
-	# Callbacks
-	# *************************************************************************
-	
 	# *************************************************************************
 	# Columns
 	# *************************************************************************
@@ -75,7 +32,13 @@ class CandidateParticipation < ActiveRecord::Base
 	# Get all columns permitted for editation
 	#
 	def self.permitted_columns
-		[:candidate_id, :election_part_id, :votes, :description, :visions]
+		[
+			:candidate_id, 
+			:election_part_id, 
+			:votes, 
+			:description, 
+			:visions
+		]
 	end
 
 end

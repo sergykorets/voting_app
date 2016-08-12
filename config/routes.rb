@@ -13,9 +13,7 @@ Rails.application.routes.draw do
 
 	# Root
 	root "homepage#index"
-	resources :election_parts
-	resources :candidate_participations
-	resources :candidates
+	
 	#
 	# RicDevise
 	#
@@ -41,29 +39,30 @@ Rails.application.routes.draw do
 	#
 	namespace :admin do
 
-		# Root
 		root "dashboard#index"
 
-		resources :election_parts do 
+		resources :election_parts, only: [] do 
 			collection do
-					post "filter"
-					get "search"
+				get "search"
 			end
 		end
-		resources :candidate_participations do 
-			collection do
-					post "filter"
-					get "search"
-			end
-		end
+
 		resources :candidates do 
 			collection do
-					post "filter"
-					get "search"
+				post "filter"
+				get "search"
 			end
+			resources :candidate_participations, except: [:index]
 		end
+
+		resources :elections do 
+			collection do
+				post "filter"
+				get "search"
+			end
+			resources :election_parts, except: [:index]
+		end
+				
 	end
-
-
 
 end

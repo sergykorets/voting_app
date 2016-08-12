@@ -1,5 +1,6 @@
 <%= render layout: "ric_admin/layouts/with_right_side" do %>
 	<%= rug_show_table_for(@election_part, { 
+		election: { type: :belongs_to, label: :name, path: "main_app.admin_election_path" },
 		name: :string,
 		max_votes_for_candidate: :integer
 	}) %>

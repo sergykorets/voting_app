@@ -1,4 +1,4 @@
---
+﻿--
 -- PostgreSQL database dump
 --
 
@@ -10,6 +10,72 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 SET search_path = public, pg_catalog;
+
+
+--
+-- Data for Name: elections; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Name: elections_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('elections_id_seq', 1, false);
+
+--
+-- Data for Name: election_parts; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO election_parts VALUES (1, NULL, 'Předsednictvo', NULL, '2016-08-11 05:16:19.957449', '2016-08-11 05:16:19.957449');
+INSERT INTO election_parts VALUES (2, NULL, 'Revizní komise', NULL, '2016-08-11 05:16:28.60713', '2016-08-11 05:16:28.60713');
+
+
+--
+-- Name: election_parts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('election_parts_id_seq', 2, true);
+
+
+--
+-- Data for Name: candidates; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO candidates VALUES (1, 'David', 'Lukeš', 'Praha', 1981, 'David_Lukeš.JPG', 'image/jpeg', 394365, '2016-08-11 05:15:46.580178', '2016-08-11 05:15:47.66487', '2016-08-11 05:15:49.166656');
+INSERT INTO candidates VALUES (2, 'Barbora', 'Hrdličková', 'Praha', 1972, 'Barbora_Hrdličková.jpg', 'image/jpeg', 40997, '2016-08-11 05:42:51.085995', '2016-08-11 05:42:51.188533', '2016-08-11 05:42:52.170005');
+INSERT INTO candidates VALUES (3, 'Filip', 'Mergental', 'Praha', 1976, 'Filip_Mergental.jpg', 'image/jpeg', 189132, '2016-08-11 07:43:01.951055', '2016-08-11 07:43:02.3053', '2016-08-11 07:43:04.396513');
+INSERT INTO candidates VALUES (4, 'Jan', 'Šisler', 'Praha', 1952, 'Jan_Šísler.jpg', 'image/jpeg', 62218, '2016-08-11 07:44:54.978107', '2016-08-11 07:44:55.168966', '2016-08-11 07:44:56.193443');
+INSERT INTO candidates VALUES (5, 'Jiří', 'Pleško', 'Praha', 1987, 'Jiří_Pleško.jpg', 'image/jpeg', 1204054, '2016-08-11 07:46:24.386876', '2016-08-11 07:46:25.192097', '2016-08-11 07:46:25.983548');
+INSERT INTO candidates VALUES (6, 'Karolína', 'Bílková', 'Praha', 1984, 'Karolína_Bílkova.jpg', 'image/jpeg', 17235, '2016-08-11 07:48:45.899794', '2016-08-11 07:48:46.023455', '2016-08-11 07:48:47.297626');
+INSERT INTO candidates VALUES (7, 'Kristýna', 'Křenová', 'Hradec Králové', 1992, 'Kristýna_Křenová.jpg', 'image/jpeg', 139915, '2016-08-11 07:50:05.761053', '2016-08-11 07:50:06.031509', '2016-08-11 07:50:10.186436');
+INSERT INTO candidates VALUES (8, 'Ladislav', 'Loebe', 'Brno', 1976, 'Ladislav_Loebe.jpg', 'image/jpeg', 519080, '2016-08-11 07:52:32.611254', '2016-08-11 07:52:33.472474', '2016-08-11 07:52:33.874717');
+INSERT INTO candidates VALUES (9, 'Lenka', 'Honzátková', 'Praha', 1976, 'Lenka_Honzátková.jpg', 'image/jpeg', 128105, '2016-08-11 07:54:00.924771', '2016-08-11 07:54:01.111542', '2016-08-11 07:54:02.045006');
+INSERT INTO candidates VALUES (10, 'Michal', 'Seidl', 'Rokytnice nad Jizerou ', 1969, 'Michal_Seidl.jpg', 'image/jpeg', 42069, '2016-08-11 07:55:38.321493', '2016-08-11 07:55:38.483933', '2016-08-11 07:55:39.606822');
+INSERT INTO candidates VALUES (11, 'Miroslav', 'Čiháček', 'Náchod', 1955, 'Miroslav_Čiháček.jpg', 'image/jpeg', 228734, '2016-08-11 07:56:55.577779', '2016-08-11 07:56:55.869304', '2016-08-11 07:56:56.962645');
+INSERT INTO candidates VALUES (12, 'Miroslav', 'Šperk', 'Hořice', 1984, 'Miroslav_Šperk.jpg', 'image/jpeg', 140687, '2016-08-11 07:58:08.904793', '2016-08-11 07:58:09.21938', '2016-08-11 07:58:10.994353');
+INSERT INTO candidates VALUES (13, 'Pavel', 'Šťastný', 'Praha', 1975, 'Pavel_Štastný.JPG', 'image/jpeg', 594518, '2016-08-11 07:59:30.088859', '2016-08-11 07:59:30.964081', '2016-08-11 07:59:31.71127');
+INSERT INTO candidates VALUES (14, 'Pavlína', 'Zvelebilová', 'Praha', 1981, 'Pavlína_Zvelebilová.JPG', 'image/jpeg', 604363, '2016-08-11 08:01:12.666667', '2016-08-11 08:01:13.646677', '2016-08-11 08:01:16.136907');
+INSERT INTO candidates VALUES (15, 'Petr', 'Hubalovský', 'Praha', 1981, 'Petr_Hubalovský.jpg', 'image/jpeg', 131343, '2016-08-11 08:02:42.624272', '2016-08-11 08:02:42.9208', '2016-08-11 08:02:44.598705');
+INSERT INTO candidates VALUES (16, 'Petr', 'Hurák', 'Roudnice nad Labem', 1974, 'Petr_Hurák.JPG', 'image/jpeg', 203879, '2016-08-11 08:04:39.666098', '2016-08-11 08:04:40.031358', '2016-08-11 08:04:42.777085');
+INSERT INTO candidates VALUES (17, 'Radovan', 'Civiš', 'Plzeň', 1973, 'Radovan_Civiš.jpg', 'image/jpeg', 2548941, '2016-08-11 08:05:51.042518', '2016-08-11 08:05:51.972042', '2016-08-11 08:05:52.610743');
+INSERT INTO candidates VALUES (18, 'Rostislav', 'Čichoň', 'Praha až Ostrava', 1966, 'Rostislav_Čichoň.jpg', 'image/jpeg', 233053, '2016-08-11 08:07:00.836215', '2016-08-11 08:07:01.574014', '2016-08-11 08:07:02.541981');
+INSERT INTO candidates VALUES (19, 'Tomáš', 'Zelenka', 'Litvínov', 1975, 'Tomáš_Zelenka.jpg', 'image/jpeg', 100865, '2016-08-11 08:09:59.079482', '2016-08-11 08:09:59.320281', '2016-08-11 08:10:00.610765');
+INSERT INTO candidates VALUES (20, 'Veronika', 'Liďáková', 'Praha', 1981, 'Veronika_Liďáková.JPG', 'image/jpeg', 1056353, '2016-08-11 08:11:05.309285', '2016-08-11 08:11:06.60335', '2016-08-11 08:11:06.96989');
+INSERT INTO candidates VALUES (21, 'Zbyněk', 'Sýkora', 'České Budějovice', 1984, 'Zbyněk_Sýkora.JPG', 'image/jpeg', 1151581, '2016-08-11 08:12:12.69786', '2016-08-11 08:12:14.104936', '2016-08-11 08:12:15.125173');
+INSERT INTO candidates VALUES (22, 'Zdeňka', 'Faltýnková', 'Praha', 1957, 'Zdeňka_Faltýnková.jpg', 'image/jpeg', 70816, '2016-08-11 08:13:20.141603', '2016-08-11 08:13:20.35081', '2016-08-11 08:13:21.465537');
+
+
+--
+-- Name: candidates_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('candidates_id_seq', 22, true);
+
+
+
+
 
 --
 -- Data for Name: candidate_participations; Type: TABLE DATA; Schema: public; Owner: postgres
@@ -56,82 +122,6 @@ INSERT INTO candidate_participations VALUES (23, 22, 1, 'Fyzioterapeut, ergotera
 
 SELECT pg_catalog.setval('candidate_participations_id_seq', 23, true);
 
-
---
--- Data for Name: candidates; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO candidates VALUES (1, 'David', 'Lukeš', 'Praha', 1981, 'David_Lukeš.JPG', 'image/jpeg', 394365, '2016-08-11 05:15:46.580178', '2016-08-11 05:15:47.66487', '2016-08-11 05:15:49.166656');
-INSERT INTO candidates VALUES (2, 'Barbora', 'Hrdličková', 'Praha', 1972, 'Barbora_Hrdličková.jpg', 'image/jpeg', 40997, '2016-08-11 05:42:51.085995', '2016-08-11 05:42:51.188533', '2016-08-11 05:42:52.170005');
-INSERT INTO candidates VALUES (3, 'Filip', 'Mergental', 'Praha', 1976, 'Filip_Mergental.jpg', 'image/jpeg', 189132, '2016-08-11 07:43:01.951055', '2016-08-11 07:43:02.3053', '2016-08-11 07:43:04.396513');
-INSERT INTO candidates VALUES (4, 'Jan', 'Šisler', 'Praha', 1952, 'Jan_Šísler.jpg', 'image/jpeg', 62218, '2016-08-11 07:44:54.978107', '2016-08-11 07:44:55.168966', '2016-08-11 07:44:56.193443');
-INSERT INTO candidates VALUES (5, 'Jiří', 'Pleško', 'Praha', 1987, 'Jiří_Pleško.jpg', 'image/jpeg', 1204054, '2016-08-11 07:46:24.386876', '2016-08-11 07:46:25.192097', '2016-08-11 07:46:25.983548');
-INSERT INTO candidates VALUES (6, 'Karolína', 'Bílková', 'Praha', 1984, 'Karolína_Bílkova.jpg', 'image/jpeg', 17235, '2016-08-11 07:48:45.899794', '2016-08-11 07:48:46.023455', '2016-08-11 07:48:47.297626');
-INSERT INTO candidates VALUES (7, 'Kristýna', 'Křenová', 'Hradec Králové', 1992, 'Kristýna_Křenová.jpg', 'image/jpeg', 139915, '2016-08-11 07:50:05.761053', '2016-08-11 07:50:06.031509', '2016-08-11 07:50:10.186436');
-INSERT INTO candidates VALUES (8, 'Ladislav', 'Loebe', 'Brno', 1976, 'Ladislav_Loebe.jpg', 'image/jpeg', 519080, '2016-08-11 07:52:32.611254', '2016-08-11 07:52:33.472474', '2016-08-11 07:52:33.874717');
-INSERT INTO candidates VALUES (9, 'Lenka', 'Honzátková', 'Praha', 1976, 'Lenka_Honzátková.jpg', 'image/jpeg', 128105, '2016-08-11 07:54:00.924771', '2016-08-11 07:54:01.111542', '2016-08-11 07:54:02.045006');
-INSERT INTO candidates VALUES (10, 'Michal', 'Seidl', 'Rokytnice nad Jizerou ', 1969, 'Michal_Seidl.jpg', 'image/jpeg', 42069, '2016-08-11 07:55:38.321493', '2016-08-11 07:55:38.483933', '2016-08-11 07:55:39.606822');
-INSERT INTO candidates VALUES (11, 'Miroslav', 'Čiháček', 'Náchod', 1955, 'Miroslav_Čiháček.jpg', 'image/jpeg', 228734, '2016-08-11 07:56:55.577779', '2016-08-11 07:56:55.869304', '2016-08-11 07:56:56.962645');
-INSERT INTO candidates VALUES (12, 'Miroslav', 'Šperk', 'Hořice', 1984, 'Miroslav_Šperk.jpg', 'image/jpeg', 140687, '2016-08-11 07:58:08.904793', '2016-08-11 07:58:09.21938', '2016-08-11 07:58:10.994353');
-INSERT INTO candidates VALUES (13, 'Pavel', 'Šťastný', 'Praha', 1975, 'Pavel_Štastný.JPG', 'image/jpeg', 594518, '2016-08-11 07:59:30.088859', '2016-08-11 07:59:30.964081', '2016-08-11 07:59:31.71127');
-INSERT INTO candidates VALUES (14, 'Pavlína', 'Zvelebilová', 'Praha', 1981, 'Pavlína_Zvelebilová.JPG', 'image/jpeg', 604363, '2016-08-11 08:01:12.666667', '2016-08-11 08:01:13.646677', '2016-08-11 08:01:16.136907');
-INSERT INTO candidates VALUES (15, 'Petr', 'Hubalovský', 'Praha', 1981, 'Petr_Hubalovský.jpg', 'image/jpeg', 131343, '2016-08-11 08:02:42.624272', '2016-08-11 08:02:42.9208', '2016-08-11 08:02:44.598705');
-INSERT INTO candidates VALUES (16, 'Petr', 'Hurák', 'Roudnice nad Labem', 1974, 'Petr_Hurák.JPG', 'image/jpeg', 203879, '2016-08-11 08:04:39.666098', '2016-08-11 08:04:40.031358', '2016-08-11 08:04:42.777085');
-INSERT INTO candidates VALUES (17, 'Radovan', 'Civiš', 'Plzeň', 1973, 'Radovan_Civiš.jpg', 'image/jpeg', 2548941, '2016-08-11 08:05:51.042518', '2016-08-11 08:05:51.972042', '2016-08-11 08:05:52.610743');
-INSERT INTO candidates VALUES (18, 'Rostislav', 'Čichoň', 'Praha až Ostrava', 1966, 'Rostislav_Čichoň.jpg', 'image/jpeg', 233053, '2016-08-11 08:07:00.836215', '2016-08-11 08:07:01.574014', '2016-08-11 08:07:02.541981');
-INSERT INTO candidates VALUES (19, 'Tomáš', 'Zelenka', 'Litvínov', 1975, 'Tomáš_Zelenka.jpg', 'image/jpeg', 100865, '2016-08-11 08:09:59.079482', '2016-08-11 08:09:59.320281', '2016-08-11 08:10:00.610765');
-INSERT INTO candidates VALUES (20, 'Veronika', 'Liďáková', 'Praha', 1981, 'Veronika_Liďáková.JPG', 'image/jpeg', 1056353, '2016-08-11 08:11:05.309285', '2016-08-11 08:11:06.60335', '2016-08-11 08:11:06.96989');
-INSERT INTO candidates VALUES (21, 'Zbyněk', 'Sýkora', 'České Budějovice', 1984, 'Zbyněk_Sýkora.JPG', 'image/jpeg', 1151581, '2016-08-11 08:12:12.69786', '2016-08-11 08:12:14.104936', '2016-08-11 08:12:15.125173');
-INSERT INTO candidates VALUES (22, 'Zdeňka', 'Faltýnková', 'Praha', 1957, 'Zdeňka_Faltýnková.jpg', 'image/jpeg', 70816, '2016-08-11 08:13:20.141603', '2016-08-11 08:13:20.35081', '2016-08-11 08:13:21.465537');
-
-
---
--- Name: candidates_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('candidates_id_seq', 22, true);
-
-
---
--- Data for Name: election_parts; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO election_parts VALUES (1, NULL, 'Předsednictvo', NULL, '2016-08-11 05:16:19.957449', '2016-08-11 05:16:19.957449');
-INSERT INTO election_parts VALUES (2, NULL, 'Revizní komise', NULL, '2016-08-11 05:16:28.60713', '2016-08-11 05:16:28.60713');
-
-
---
--- Name: election_parts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('election_parts_id_seq', 2, true);
-
-
---
--- Data for Name: elections; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Name: elections_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('elections_id_seq', 1, false);
-
-
---
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO users VALUES (1, '2016-08-11 05:13:47.911826', '2016-08-11 12:07:19.489053', 'admin@clockstar.cz', '$2a$10$1nSvUWZ1kSvVqm9hPlxDWOBY8UaKuTntAK47wiL1SONcDlvydpc7G', NULL, NULL, NULL, 5, '2016-08-11 12:07:19.487722', '2016-08-11 07:41:46.26374', '127.0.0.1', '127.0.0.1', NULL, '', '', 'admin', NULL, NULL, NULL);
-
-
---
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('users_id_seq', 1, true);
 
 
 --

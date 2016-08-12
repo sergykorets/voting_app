@@ -6,15 +6,9 @@ cs:
     admin:
       dashboard:
         index: Dashboard
-      
-  activerecord:
-    attributes:
-      
-  notices:
-    models:
-  errors:
-    models:
+      elections:
+        index: Volby
+      candidates:
+        index: Kandidáti
 
-  devise:
-    action:
-      sign_in: Sign in
+     

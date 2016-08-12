@@ -1,0 +1,28 @@
+div.text-container {
+	margin: 0 auto;
+	width: 75%;    
+}
+.content {
+	max-height: 0;
+	overflow: hidden;
+	-webkit-transition: max-height 0.8s;
+	-moz-transition: max-height 0.8s;
+	transition: max-height 0.8s;
+}
+.showContent {
+	max-height: 1000px;
+}
+.show-more {
+	padding: 10px 0;
+	text-align: left;
+	margin-left: 1.5%;
+}
+.lead {
+  	padding-left: 5%;
+}
+.featurette-heading {
+	padding-left: 5%;
+}
+.year {
+	padding-left: 6.5%;
+}

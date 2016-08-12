@@ -14,15 +14,15 @@ class Candidate < ActiveRecord::Base
 	# *************************************************************************
 	# Structure
 	# *************************************************************************
-	has_many :candidate_participations
-	has_many :votes
-
+	
+	has_many :candidate_participations, dependent: :destroy
+	has_many :votes, dependent: :destroy
 
 	# *************************************************************************
 	# Validators
 	# *************************************************************************
 
-	has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+	has_attached_file :photo, styles: { medium: "300x300#", thumb: "100x100#" }
 	validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
 	# *************************************************************************
@@ -30,18 +30,12 @@ class Candidate < ActiveRecord::Base
 	# *************************************************************************
 
 	name_column :name
-
-	#
-	# Add formatted name to JSON output
-	#
-
 	add_methods_to_json :name_formatted
 
 	# *************************************************************************
 	# Scopes
 	# *************************************************************************
 
-	
 	#
 	# Filter
 	#
@@ -74,28 +68,18 @@ class Candidate < ActiveRecord::Base
 			", query: query)
 		end
 	end
-
-	# *************************************************************************
-	# Enums
-	# *************************************************************************
-
-	# *************************************************************************
-	# Virtual attributes
-	# *************************************************************************
-
-	# *************************************************************************
-	# Callbacks
-	# *************************************************************************
 	
 	# *************************************************************************
 	# Columns
 	# *************************************************************************
 	
-	#
-	# Get all columns permitted for editation
-	#
 	def self.permitted_columns
-		[ :created_at, :id, :photo, :birth_year, :address, :name => [:firstname, :lastname] ]
+		[
+			:photo, 
+			:birth_year, 
+			:address, 
+			{ :name => [:firstname, :lastname] }
+		]
 	end
 
 end

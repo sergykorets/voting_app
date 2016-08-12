@@ -20,3 +20,5 @@
 
 // ClockPicker
 //= require clockpicker/clockpicker
+
+//= require_tree ./application

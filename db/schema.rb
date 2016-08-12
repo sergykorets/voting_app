@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160810150007) do
+ActiveRecord::Schema.define(version: 20160812144901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "unaccent"
 
   create_table "candidate_participations", force: :cascade do |t|
     t.integer  "candidate_id"
