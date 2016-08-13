@@ -1,45 +1,3 @@
-PATH
-  remote: /Users/mat/Projects/ruby-on-rails/rug/rug_builder
-  specs:
-    rug_builder (1.16.4.dev)
-      actionview (~> 4.2)
-      rug_support (= 1.16.4.dev)
-
-PATH
-  remote: /Users/mat/Projects/ruby-on-rails/rug/rug_controller
-  specs:
-    rug_controller (1.16.4.dev)
-      actionpack (~> 4.2)
-      rug_support (= 1.16.4.dev)
-
-PATH
-  remote: /Users/mat/Projects/ruby-on-rails/rug/rug_record
-  specs:
-    rug_record (1.16.4.dev)
-      activerecord (~> 4.2)
-      rug_support (= 1.16.4.dev)
-
-PATH
-  remote: /Users/mat/Projects/ruby-on-rails/rug/rug_support
-  specs:
-    rug_support (1.16.4.dev)
-      activesupport (~> 4.2)
-      truncate_html (~> 0.9)
-
-PATH
-  remote: /Users/mat/Projects/ruby-on-rails/rug/rug_view
-  specs:
-    rug_view (1.16.4.dev)
-      rug_support (= 1.16.4.dev)
-
-PATH
-  remote: /Users/mat/Projects/ruby-on-rails/rug
-  specs:
-    rug (1.16.4.dev)
-      rails (~> 4.2)
-      rug_record (= 1.16.4.dev)
-      rug_support (= 1.16.4.dev)
-
 GEM
   remote: https://rubygems.org/
   remote: http://gems.clockstar.cz/
@@ -192,16 +150,34 @@ GEM
     ref (2.0.0)
     responders (2.2.0)
       railties (>= 4.2.0, < 5.1)
-    ric_account (1.29.10)
+    ric_account (1.29.11)
       rails (~> 4.2)
-    ric_admin_v2 (1.29.10)
+    ric_admin_v2 (1.29.11)
       gretel (~> 3.0)
-    ric_devise (1.29.10)
+    ric_devise (1.29.11)
       devise (~> 3.5)
       rails (~> 4.2)
-    ric_user (1.29.10)
+    ric_user (1.29.11)
       devise (~> 3.5)
       rails (~> 4.2)
+    rug (1.16.5)
+      rails (~> 4.2)
+      rug_record (= 1.16.5)
+      rug_support (= 1.16.5)
+    rug_builder (1.16.5)
+      actionview (~> 4.2)
+      rug_support (= 1.16.5)
+    rug_controller (1.16.5)
+      actionpack (~> 4.2)
+      rug_support (= 1.16.5)
+    rug_record (1.16.5)
+      activerecord (~> 4.2)
+      rug_support (= 1.16.5)
+    rug_support (1.16.5)
+      activesupport (~> 4.2)
+      truncate_html (~> 0.9)
+    rug_view (1.16.5)
+      rug_support (= 1.16.5)
     sass (3.4.22)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -257,16 +233,16 @@ DEPENDENCIES
   pg
   quiet_assets
   rails (= 4.2.6)
-  ric_account (= 1.29.10)
-  ric_admin_v2 (= 1.29.10)
-  ric_devise (= 1.29.10)
-  ric_user (= 1.29.10)
-  rug!
-  rug_builder!
-  rug_controller!
-  rug_record!
-  rug_support!
-  rug_view!
+  ric_account (= 1.29.11)
+  ric_admin_v2 (= 1.29.11)
+  ric_devise (= 1.29.11)
+  ric_user (= 1.29.11)
+  rug (= 1.16.5)!
+  rug_builder (= 1.16.5)
+  rug_controller (= 1.16.5)
+  rug_record (= 1.16.5)
+  rug_support (= 1.16.5)
+  rug_view (= 1.16.5)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
