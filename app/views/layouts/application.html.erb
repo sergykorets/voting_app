@@ -7,9 +7,9 @@
 	<%= javascript_include_tag 'application' %>
 	<%= csrf_meta_tags %>
 </head>
-<body class="container">
-	<%= render partial: "layouts/application/flash" %>
-	<div id="container" class="col-md-12 center-block">
+<body>
+	<div class="container">
+		<%= render partial: "layouts/application/flash" %>
 		<%= yield %>
 	</div>	
 </body>

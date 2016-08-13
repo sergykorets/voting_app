@@ -1,21 +1,17 @@
 $(document).ready(function() {
-	console.log( "ready!" );
 	$(".show-more button").on("click", function() {
 		var $this = $(this);
-		console.log($this);
 		var $content = $this.parent().next("div.content");
-		var linkText = $this.text().toUpperCase();
+		
+		// Toggle
+		$content.toggleClass("show-content");
 
-		console.log($content);
-		$content.toggleClass("showContent");
-
-		if(linkText === "MORE"){
-			linkText = "Less";
-
+		var shown = $content.hasClass("show-content");
+		if (shown) {
+			linkText = "Méně";
 		} else {
-			linkText = "More";
-		};
-
+			linkText = "Více";
+		}
 		$this.text(linkText);
 	});
 });
