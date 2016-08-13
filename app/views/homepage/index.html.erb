@@ -1,98 +1,11 @@
-
-<div id="masthead">  
-	<div class="container">
-		<div class="row">
-			<div class="col-md-7">
-				<h1><%= t("headers.homepage.index") %></h1>
-			</div>
-		</div> 
-	</div>
+<div class="page-header">
+	<h1><%= @election.name %></h1>
 </div>
 
 <% tabs = rug_tabs %>
-<% tabs.tab :first, "Předsednictvo" do %>
-<hr class="featurette-divider">
-<% @candidate_participations.each do |participation| %>
-	<% if participation.election_part.id == 1 %>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12"> 
-					<div class="panel">
-						<div class="panel-body">
-							<div class="row">    
-								<br>
-								<div class="col-md-2 col-sm-3 text-center">
-									<%= image_tag participation.candidate.photo.url(:medium), class: "img-circle", style: "width:200px;height:200px" %>
-								</div>
-								<div class="col-md-10 col-sm-9">
-									<h2 class="featurette-heading"><%= participation.candidate.name_firstname %> <%= participation.candidate.name_lastname %>
-										<span class="text-muted"><%= participation.candidate.address %></span>
-									</h2>
-									<div class="row">
-										<p class="year">Rok narození: <%= participation.candidate.birth_year %></p>
-										<div class="col-xs-12 content hideContent">
-											<h2 class="featurette-heading">
-												<span class="text-muted">Představení kandidáta</span>
-											</h2>
-											<p class="lead"><%= participation.description %></p>
-											<h2 class="featurette-heading">
-												<span class="text-muted">Vize rozvoje asociace a konkrétní návrhy</span>
-											</h2>
-											<p class="lead"><%= participation.visions %></p>
-										</div>
-										<p class="lead show-more"><button class="btn btn-default">More</button></p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	<% else %>
-		<% next %>
-	<% end %>  
-<% end %>
-<% end %>
-<br>
-<% tabs.tab :second, "Revizní komise" do %>
-<hr class="featurette-divider">
-<% @candidate_participations.each do |participation| %>
-	<% if participation.election_part.id == 2 %>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12"> 
-					<div class="panel">
-						<div class="panel-body">
-							<div class="row">    
-								<br>
-								<div class="col-md-2 col-sm-3 text-center">
-									<%= image_tag participation.candidate.photo.url(:medium), class: "img-circle", style: "width:200px;height:200px" %>
-								</div>
-								<div class="col-md-10 col-sm-9">
-									<h2 class="featurette-heading"><%= participation.candidate.name_firstname %> <%= participation.candidate.name_lastname %>
-										<span class="text-muted"><%= participation.candidate.address %></span>
-									</h2>
-									<div class="row">
-										<p class="year">Rok narození: <%= participation.candidate.birth_year %></p>
-										<div class="col-xs-12 content hideContent">
-											<h2 class="featurette-heading">
-												<span class="text-muted">Představení kandidáta</span>
-											</h2>
-											<p class="lead"><%= participation.description %></p>
-										</div>
-										<p class="lead show-more"><button class="btn btn-default">More</button></p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	<% else %>
-		<% next %>
-	<% end %>  
-<% end %>
+<% @election.election_parts.order(id: :asc).each do |election_part| %>
+	<% tabs.tab "election_part_#{election_part.id}", election_part.name do %>
+		<%= render partial: "election_part", locals: { election_part: election_part } %>
+	<% end %>
 <% end %>
 <%= tabs.render %>

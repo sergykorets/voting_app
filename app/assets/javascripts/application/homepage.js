@@ -3,7 +3,7 @@ $(document).ready(function() {
 	$(".show-more button").on("click", function() {
 		var $this = $(this);
 		console.log($this);
-		var $content = $this.parent().prev("div.content");
+		var $content = $this.parent().next("div.content");
 		var linkText = $this.text().toUpperCase();
 
 		console.log($content);

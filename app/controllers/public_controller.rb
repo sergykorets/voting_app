@@ -2,19 +2,19 @@
 # * Copyright (c) Clockstar s.r.o. All rights reserved.
 # *****************************************************************************
 # *
-# * Root
+# * Abstract engine controller
 # *
 # * Author: Matěj Outlý
-# * Date  : 20. 5. 2016
+# * Date  : 12. 7. 2016
 # *
 # *****************************************************************************
 
-class HomepageController < PublicController
+class PublicController < ApplicationController
 
-	before_action :set_election
+protected
 
-	def index
-		#@candidate_participations = CandidateParticipation.all
+	def set_election
+		@election = Election.current
 	end
 
 end

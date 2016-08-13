@@ -1,0 +1,25 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="row">    
+			<div class="col-md-3 col-sm-3 text-center">
+				<%= image_tag candidate_participation.candidate.photo.url(:medium), class: "img-circle", style: "width:200px;height:200px" %>
+			</div>
+			<div class="col-md-9 col-sm-9">
+				<h2 class="featurette-heading"><%= candidate_participation.candidate.name_formatted %>
+					<small class="text-muted"><%= candidate_participation.candidate.address %></small>
+				</h2>
+				<p class="">Rok narození: <%= candidate_participation.candidate.birth_year %></p>
+				<div class="show-more">
+					<button class="btn btn-default">More</button>
+				</div>
+				<div class="content hideContent">
+					<h3>Představení kandidáta</h3>
+					<p class=""><%= candidate_participation.description %></p>
+					<h3>Vize rozvoje asociace a konkrétní návrhy</h3>
+					<p class=""><%= candidate_participation.visions %></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+		
