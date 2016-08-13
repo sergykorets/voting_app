@@ -25,4 +25,7 @@
 // ClockPicker
 //= require clockpicker/clockpicker
 
+// jCrop
+//= require jcrop/jcrop
+
 //= require ric_admin

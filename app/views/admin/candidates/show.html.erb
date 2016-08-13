@@ -3,7 +3,7 @@
 		name: :name,
 		address: :string,
 		birth_year: :integer,
-		photo: { type: :picture, thumb_style: :thumb }
+		photo: { type: :picture, thumb_style: :thumb, force_no_cache: true }
 	}) %>
 	<%= rug_index_table_for(@candidate.candidate_participations.order(created_at: :desc), { 
 		created_at: :datetime,

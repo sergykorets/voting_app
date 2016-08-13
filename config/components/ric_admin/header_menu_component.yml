@@ -7,5 +7,12 @@ items:
   -
     label: headers.admin.elections.index
     url: main_app.admin_elections_path
-    icon: globe
+    icon: hand-paper-o
     active_if: "controller_name == 'elections'"
+  -
+    type: delimiter
+  -
+    label: headers.web
+    url: main_app.root_path
+    icon: globe
+    

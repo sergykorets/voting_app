@@ -22,8 +22,9 @@ class Candidate < ActiveRecord::Base
 	# Validators
 	# *************************************************************************
 
-	has_attached_file :photo, styles: { medium: "300x300#", thumb: "100x100#" }
-	validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
+	#has_attached_file :photo, styles: { full: "800x800>", thumb: "200x200#" }
+	#validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
+	croppable_picture_column :photo, styles: { full: "800x800>", thumb: "200x200#" }
 
 	# *************************************************************************
 	# Name
@@ -75,10 +76,15 @@ class Candidate < ActiveRecord::Base
 	
 	def self.permitted_columns
 		[
-			:photo, 
+			{ :name => [:firstname, :lastname] },
 			:birth_year, 
 			:address, 
-			{ :name => [:firstname, :lastname] }
+			:photo, 
+			:photo_crop_x, 
+			:photo_crop_y, 
+			:photo_crop_w, 
+			:photo_crop_h,
+			:photo_perform_cropping,
 		]
 	end
 

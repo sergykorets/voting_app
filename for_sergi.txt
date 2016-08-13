@@ -14,3 +14,5 @@
 - We need to define election model for election parts - definition of votable dates, etc.
 - check <div> </div> pairing when copying some code
 - there is nothing like :references type defined for show/index table
+- Homepage structure - why so complicated?????? Everything comes from current election -> it breaks to election parts -> each part has some candidate participations. Your solution is much longer and less flexible...
+- Homepage HTML - why so complicated HTML markup????? Why too many rows/columns/classes and other shit? It's just simple centered container, one tab, list of panels, each panel is a row with two columns.

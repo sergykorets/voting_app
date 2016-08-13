@@ -11,4 +11,34 @@ cs:
       candidates:
         index: Kandidáti
 
+  activerecord:
+    attributes:
+      candidate:
+        name: Jméno
+        name_lastname: Příjmení
+        name_firstname: Křestní jméno
+        address: Adresa
+        birth_year: Rok narození
+        photo: Fotografie
+        photo_crop: Oříznutí fotografie
+      candidate_participation:
+        created_at: Vytvořeno
+        election_part: Volební téma
+        election_part_id: Volební téma
+        votes: Počet hlasů
+        candidate: Kandidát
+        candidate_id: Kandidát
+        description: Popis kandidáta
+        visions: Vize kandidáta
+      election:
+        name: Název
+        votable_from: Od
+        votable_to: Do
+        invitation_sent_at: Pozvánka poslána
+        results_sent_at: Výsledky poslány
+      election_part:
+        election: Volby
+        election_id: Volby
+        name: Název
+        max_votes_for_candidate: Maximální počet hlasů na voliče
      
