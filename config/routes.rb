@@ -60,7 +60,13 @@ Rails.application.routes.draw do
 				post "filter"
 				get "search"
 			end
-			resources :election_parts, except: [:index]
+			resources :election_parts, except: [:index] do
+				resources :candidate_participations, only: [] do
+					member do
+						put "move/:relation/:destination_id", action: "move", as: "move"
+					end
+				end
+			end
 		end
 				
 	end

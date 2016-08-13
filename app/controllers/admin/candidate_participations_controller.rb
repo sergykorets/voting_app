@@ -11,7 +11,9 @@
 
 class Admin::CandidateParticipationsController < AdminController
 
-	before_action :set_candidate
+	before_action :set_election, only: [:move]
+	before_action :set_election_part, only: [:move]
+	before_action :set_candidate, only: [:show, :new, :edit, :create, :update, :destroy]
 	before_action :set_candidate_participation, only: [:show, :edit, :update, :destroy]
 
 	#
@@ -84,18 +86,28 @@ class Admin::CandidateParticipationsController < AdminController
 		end
 	end
 
+	#
+	# Move action
+	#
+	def move
+		if CandidateParticipation.move(params[:id], params[:relation], params[:destination_id])
+			respond_to do |format|
+				format.html { redirect_to main_app.admin_candidates_path, notice: I18n.t("activerecord.notices.models.candidate_participation.move") }
+				format.json { render json: true }
+			end
+		else
+			respond_to do |format|
+				format.html { redirect_to main_app.admin_candidates_path, alert: I18n.t("activerecord.errors.models.candidate_participation.move") }
+				format.json { render json: false }
+			end
+		end
+	end
+
 protected
 
 	# *************************************************************************
 	# Model setters
 	# *************************************************************************
-
-	def set_candidate
-		@candidate = Candidate.find_by_id(params[:candidate_id])
-		if @candidate.nil?
-			redirect_to main_app.admin_candidates_path, alert: I18n.t("activerecord.errors.models.candidate.not_found")
-		end
-	end
 
 	def set_candidate_participation
 		@candidate_participation = CandidateParticipation.find_by_id(params[:id])

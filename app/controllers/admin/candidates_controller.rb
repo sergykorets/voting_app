@@ -119,9 +119,6 @@ protected
 	# Model setters
 	# *************************************************************************
 
-	#
-	# Set model
-	#
 	def set_candidate
 		@candidate = Candidate.find_by_id(params[:id])
 		if @candidate.nil?

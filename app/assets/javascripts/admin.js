@@ -28,4 +28,7 @@
 // jCrop
 //= require jcrop/jcrop
 
+// Sortable
+//= require sortable/sortable
+
 //= require ric_admin

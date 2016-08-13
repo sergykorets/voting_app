@@ -119,9 +119,6 @@ protected
 	# Model setters
 	# *************************************************************************
 
-	#
-	# Set model
-	#
 	def set_election
 		@election = Election.find_by_id(params[:id])
 		if @election.nil?

@@ -98,13 +98,6 @@ protected
 	# Model setters
 	# *************************************************************************
 
-	def set_election
-		@election = Election.find_by_id(params[:election_id])
-		if @election.nil?
-			redirect_to main_app.admin_elections_path, alert: I18n.t("activerecord.errors.models.election.not_found")
-		end
-	end
-
 	def set_election_part
 		@election_part = ElectionPart.find_by_id(params[:id])
 		if @election_part.nil?

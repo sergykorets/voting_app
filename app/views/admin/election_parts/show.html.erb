@@ -4,4 +4,11 @@
 		name: :string,
 		max_votes_for_candidate: :integer
 	}) %>
+	<%= rug_index_table_for(@election_part.candidate_participations.order(position: :asc), { 
+		created_at: :datetime,
+		candidate: { type: :belongs_to, label: :name_formatted, path: lambda { |candidate| main_app.admin_candidate_path(candidate) } },
+		votes: :integer,
+	}, paths: {
+		move: lambda { |candidate_participation, relation, destination_id| main_app.move_admin_election_election_part_candidate_participation_path(@election, @election_part, candidate_participation, relation, destination_id) }
+	}, moving: true, summary: true ) %>
 <% end %>
