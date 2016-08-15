@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: czepa_development
+  username: postgres
+  password: secret
+
+staging:
+  <<: *default
+  database: czepa_staging
+  username: postgres
+  password: secret
+
+production:
+  <<: *default
+  database: czepa_production
+  username: postgres
+  password: secret

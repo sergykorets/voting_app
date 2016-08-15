@@ -74,10 +74,10 @@ Rails.application.configure do
 		:user_name => "no-reply@clockapp.cz",
 		:password => "l9Xy4B7y",
 	}
-	config.action_mailer.default_url_options = { :host => 'czepa.test.clockstar.cz' }
+	config.action_mailer.default_url_options = { :host => 'czepa.test.anuba.cz' }
 
 	# Controller setting
-	config.action_controller.default_url_options = { :host => 'czepa.test.clockstar.cz' }
+	config.action_controller.default_url_options = { :host => 'czepa.test.anuba.cz' }
 
 	# Enable locale fallbacks for I18n (makes lookups for any locale fall back to
 	# the I18n.default_locale when a translation cannot be found).
