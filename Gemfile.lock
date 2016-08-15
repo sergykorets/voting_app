@@ -237,7 +237,7 @@ DEPENDENCIES
   ric_admin_v2 (= 1.29.11)
   ric_devise (= 1.29.11)
   ric_user (= 1.29.11)
-  rug (= 1.16.5)!
+  rug (= 1.16.5)
   rug_builder (= 1.16.5)
   rug_controller (= 1.16.5)
   rug_record (= 1.16.5)
