@@ -17,6 +17,7 @@ cs:
         name: Jméno
         name_lastname: Příjmení
         name_firstname: Křestní jméno
+        name_title: Titul
         address: Adresa
         birth_year: Rok narození
         photo: Fotografie
@@ -32,6 +33,7 @@ cs:
         visions: Vize kandidáta
       election:
         name: Název
+        content: Informace
         votable_from: Od
         votable_to: Do
         invitation_sent_at: Pozvánka poslána

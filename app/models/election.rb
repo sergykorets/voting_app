@@ -61,6 +61,7 @@ class Election < ActiveRecord::Base
 	def self.permitted_columns
 		[
 			:name,
+			:content,
 			:votable_from,
 			:votable_to
 		]

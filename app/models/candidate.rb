@@ -30,7 +30,7 @@ class Candidate < ActiveRecord::Base
 	# Name
 	# *************************************************************************
 
-	name_column :name
+	name_column :name, title: true
 	add_methods_to_json :name_formatted
 
 	# *************************************************************************
@@ -76,7 +76,7 @@ class Candidate < ActiveRecord::Base
 	
 	def self.permitted_columns
 		[
-			{ :name => [:firstname, :lastname] },
+			{ :name => [:firstname, :lastname, :title] },
 			:birth_year, 
 			:address, 
 			:photo, 

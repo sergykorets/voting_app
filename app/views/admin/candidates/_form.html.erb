@@ -1,5 +1,5 @@
 <%= rug_form_for(@candidate, create_url: "main_app.admin_candidates_path", update_url: "main_app.admin_candidate_path") do |f| %>
-	<%= f.name_row :name %>
+	<%= f.name_row :name, title: true %>
 	<%= f.text_input_row :address %>
 	<%= f.text_input_row :birth_year, :number_field %>
 	<%= f.dropzone_row :photo, crop: true %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160813103648) do
+ActiveRecord::Schema.define(version: 20160815120955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160813103648) do
     t.integer  "photo_crop_y"
     t.integer  "photo_crop_w"
     t.integer  "photo_crop_h"
+    t.string   "name_title"
   end
 
   create_table "election_parts", force: :cascade do |t|
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(version: 20160813103648) do
     t.datetime "results_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "content"
   end
 
   create_table "users", force: :cascade do |t|
