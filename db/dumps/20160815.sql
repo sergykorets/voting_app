@@ -2,10 +2,9 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.3
--- Dumped by pg_dump version 9.5.1
-
--- Started on 2016-08-15 10:20:18 CEST
+-- Dumped from database version 9.3.9
+-- Dumped by pg_dump version 9.4.0
+-- Started on 2016-08-15 17:25:58
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -13,53 +12,52 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 2447 (class 0 OID 41970)
--- Dependencies: 186
--- Data for Name: candidates; Type: TABLE DATA; Schema: public; Owner: mat
+-- TOC entry 2045 (class 0 OID 30728)
+-- Dependencies: 174
+-- Data for Name: candidates; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO candidates VALUES (21, 'Zbyněk', 'Sýkora', 'České Budějovice', 1984, 'Zbyněk_Sýkora.JPG', 'image/jpeg', 2130671, '2016-08-13 10:29:11.323252', '2016-08-11 08:12:14.104936', '2016-08-13 10:29:30.583443', 107, 0, 578, 578);
-INSERT INTO candidates VALUES (19, 'Tomáš', 'Zelenka', 'Litvínov', 1975, 'Tomáš_Zelenka.jpg', 'image/jpeg', 75176, '2016-08-13 10:29:51.076253', '2016-08-11 08:09:59.320281', '2016-08-13 10:30:09.142258', 0, 16, 709, 709);
-INSERT INTO candidates VALUES (14, 'Pavlína', 'Zvelebilová', 'Praha', 1981, 'Pavlína_Zvelebilová.JPG', 'image/jpeg', 4645528, '2016-08-13 10:30:35.513433', '2016-08-11 08:01:13.646677', '2016-08-13 10:30:52.777218', 0, 15, 533, 533);
-INSERT INTO candidates VALUES (17, 'Radovan', 'Civiš', 'Plzeň', 1973, 'Radovan_Civiš.jpg', 'image/jpeg', 2548941, '2016-08-13 10:21:26.721974', '2016-08-11 08:05:51.972042', '2016-08-13 10:22:12.110972', 0, 13, 777, 777);
-INSERT INTO candidates VALUES (6, 'Karolína', 'Bílková', 'Praha', 1984, 'Karolína_Bílkova.jpg', 'image/jpeg', 61269, '2016-08-13 10:07:54.75285', '2016-08-11 07:48:46.023455', '2016-08-13 10:22:25.648602', 0, 40, 320, 320);
-INSERT INTO candidates VALUES (18, 'Rostislav', 'Čichoň', 'Praha až Ostrava', 1966, 'Rostislav_Čichoň.jpg', 'image/jpeg', 1060614, '2016-08-13 10:31:13.811664', '2016-08-11 08:07:01.574014', '2016-08-13 10:31:30.410233', 0, 46, 754, 754);
-INSERT INTO candidates VALUES (22, 'Zdeňka', 'Faltýnková', 'Praha', 1957, 'Zdeňka_Faltýnková.jpg', 'image/jpeg', 140177, '2016-08-13 10:22:44.845414', '2016-08-11 08:13:20.35081', '2016-08-13 10:23:03.091033', 0, 3, 641, 641);
-INSERT INTO candidates VALUES (9, 'Lenka', 'Honzátková', 'Praha', 1976, 'Lenka_Honzátková.jpg', 'image/jpeg', 180307, '2016-08-13 10:23:18.903395', '2016-08-11 07:54:01.111542', '2016-08-13 10:23:31.086794', 0, 38, 533, 533);
-INSERT INTO candidates VALUES (11, 'Miroslav', 'Čiháček', 'Náchod', 1955, 'Miroslav_Čiháček.jpg', 'image/jpeg', 328951, '2016-08-13 10:32:25.67856', '2016-08-11 07:56:55.869304', '2016-08-13 10:32:39.492568', 0, 27, 624, 624);
-INSERT INTO candidates VALUES (2, 'Barbora', 'Hrdličková', 'Praha', 1972, 'Barbora_Hrdličková.jpg', 'image/jpeg', 61799, '2016-08-13 10:23:45.317902', '2016-08-11 05:42:51.188533', '2016-08-13 10:23:54.50994', 0, 0, 261, 261);
-INSERT INTO candidates VALUES (15, 'Petr', 'Hubalovský', 'Praha', 1981, 'Petr_Hubalovský.jpg', 'image/jpeg', 213747, '2016-08-13 10:24:08.157623', '2016-08-11 08:02:42.9208', '2016-08-13 10:24:23.669475', 0, 173, 604, 604);
-INSERT INTO candidates VALUES (16, 'Petr', 'Hurák', 'Roudnice nad Labem', 1974, 'Petr_Hurák.JPG', 'image/jpeg', 303335, '2016-08-13 10:24:40.50413', '2016-08-11 08:04:40.031358', '2016-08-13 10:24:57.298998', 0, 29, 600, 600);
-INSERT INTO candidates VALUES (4, 'Jan', 'Šísler', 'Praha', 1952, 'Jan_Šísler.jpg', 'image/jpeg', 161375, '2016-08-13 10:33:05.343967', '2016-08-11 07:44:55.168966', '2016-08-13 10:33:45.20965', 130, 132, 401, 401);
-INSERT INTO candidates VALUES (7, 'Kristýna', 'Křenová', 'Hradec Králové', 1992, 'Kristýna_Křenová.jpg', 'image/jpeg', 118890, '2016-08-13 10:25:12.475302', '2016-08-11 07:50:06.031509', '2016-08-13 10:25:23.56032', 130, 0, 534, 534);
-INSERT INTO candidates VALUES (20, 'Veronika', 'Liďáková', 'Praha', 1981, 'Veronika_Liďáková.JPG', 'image/jpeg', 4558629, '2016-08-13 10:25:47.95375', '2016-08-11 08:11:06.60335', '2016-08-13 10:26:13.822092', 0, 35, 533, 533);
-INSERT INTO candidates VALUES (13, 'Pavel', 'Šťastný', 'Praha', 1975, 'Pavel_Štastný.JPG', 'image/jpeg', 1149125, '2016-08-13 10:34:02.067882', '2016-08-11 07:59:30.964081', '2016-08-13 10:34:15.961628', 0, 0, 534, 534);
-INSERT INTO candidates VALUES (8, 'Ladislav', 'Loebe', 'Brno', 1976, 'Ladislav_Loebe.jpg', 'image/jpeg', 2300867, '2016-08-13 10:26:34.853251', '2016-08-11 07:52:33.472474', '2016-08-13 10:26:49.571135', 0, 8, 533, 533);
-INSERT INTO candidates VALUES (1, 'David', 'Lukeš', 'Praha', 1981, 'David_Lukeš.JPG', 'image/jpeg', 910251, '2016-08-13 10:27:04.915527', '2016-08-11 05:15:47.66487', '2016-08-13 10:27:22.527545', 232, 0, 534, 534);
-INSERT INTO candidates VALUES (3, 'Filip', 'Mergental', 'Praha', 1976, 'Filip_Mergental.jpg', 'image/jpeg', 824392, '2016-08-13 10:27:37.413029', '2016-08-11 07:43:02.3053', '2016-08-13 10:27:49.692555', 0, 0, 800, 800);
-INSERT INTO candidates VALUES (5, 'Jiří', 'Pleško', 'Praha', 1987, 'Jiří_Pleško.jpg', 'image/jpeg', 4601876, '2016-08-13 10:28:02.436455', '2016-08-11 07:46:25.192097', '2016-08-13 10:28:17.834754', 0, 96, 600, 600);
-INSERT INTO candidates VALUES (10, 'Michal', 'Seidl', 'Rokytnice nad Jizerou ', 1969, 'Michal_Seidl.jpg', 'image/jpeg', 136582, '2016-08-13 10:28:36.842725', '2016-08-11 07:55:38.483933', '2016-08-13 10:28:48.570299', 0, 0, 526, 526);
-INSERT INTO candidates VALUES (12, 'Miroslav', 'Šperk', 'Hořice', 1984, 'Miroslav_Šperk.jpg', 'image/jpeg', 333816, '2016-08-13 11:11:43.890112', '2016-08-11 07:58:09.21938', '2016-08-13 11:11:58.149351', 0, 0, 720, 720);
-
-
---
--- TOC entry 2449 (class 0 OID 41981)
--- Dependencies: 188
--- Data for Name: elections; Type: TABLE DATA; Schema: public; Owner: mat
---
-
-INSERT INTO elections VALUES (1, 'Volby do předsednictva a revizní komise 2016', '2016-09-15', '2016-10-15', NULL, NULL, '2016-08-12 15:03:52.950242', '2016-08-12 15:05:56.838144');
+INSERT INTO candidates VALUES (10, 'Michal', 'Seidl', 'Rokytnice nad Jizerou ', 1969, 'Michal_Seidl.jpg', 'image/jpeg', 136582, '2016-08-13 10:28:36.842725', '2016-08-11 07:55:38.483933', '2016-08-13 10:28:48.570299', 0, 0, 526, 526, NULL);
+INSERT INTO candidates VALUES (17, 'Radovan', 'Civiš', 'Plzeň', 1973, 'Radovan_Civis.jpg', 'image/jpeg', 2548941, '2016-08-15 08:53:25.030713', '2016-08-11 08:05:51.972042', '2016-08-15 08:53:26.841399', 0, 13, 777, 777, NULL);
+INSERT INTO candidates VALUES (22, 'Zdeňka', 'Faltýnková', 'Praha', 1957, 'Zdenka_Faltynkova.jpg', 'image/jpeg', 140177, '2016-08-15 08:54:06.717346', '2016-08-11 08:13:20.35081', '2016-08-15 08:54:07.174101', 0, 3, 641, 641, NULL);
+INSERT INTO candidates VALUES (15, 'Petr', 'Hubalovský', 'Praha', 1981, 'Petr_Hubalovsky.jpg', 'image/jpeg', 213747, '2016-08-15 08:55:39.407963', '2016-08-11 08:02:42.9208', '2016-08-15 08:55:40.185993', 0, 173, 604, 604, NULL);
+INSERT INTO candidates VALUES (16, 'Petr', 'Hurák', 'Roudnice nad Labem', 1974, 'Petr_Hurak.JPG', 'image/jpeg', 303335, '2016-08-15 08:55:58.372959', '2016-08-11 08:04:40.031358', '2016-08-15 08:55:59.188213', 0, 29, 600, 600, NULL);
+INSERT INTO candidates VALUES (7, 'Kristýna', 'Křenová', 'Hradec Králové', 1992, 'Kristyna_Krenova.jpg', 'image/jpeg', 118890, '2016-08-15 08:56:15.121408', '2016-08-11 07:50:06.031509', '2016-08-15 08:56:15.880303', 130, 0, 534, 534, NULL);
+INSERT INTO candidates VALUES (5, 'Jiří', 'Pleško', 'Praha', 1987, 'Jiri_Plesko.jpg', 'image/jpeg', 4601876, '2016-08-15 09:03:20.322763', '2016-08-11 07:46:25.192097', '2016-08-15 09:03:22.852461', 0, 96, 600, 600, NULL);
+INSERT INTO candidates VALUES (11, 'Miroslav', 'Čiháček', 'Náchod', 1955, 'Miroslav_Cihacek.jpg', 'image/jpeg', 328951, '2016-08-15 09:12:05.31432', '2016-08-11 07:56:55.869304', '2016-08-15 09:12:07.103083', 0, 27, 624, 624, NULL);
+INSERT INTO candidates VALUES (4, 'Jan', 'Šísler', 'Praha', 1952, 'Jan_Sisler.jpg', 'image/jpeg', 161375, '2016-08-15 09:12:47.352838', '2016-08-11 07:44:55.168966', '2016-08-15 09:12:48.158781', 130, 132, 401, 401, NULL);
+INSERT INTO candidates VALUES (1, 'David', 'Lukeš', 'Praha', 1981, 'David_Lukes.JPG', 'image/jpeg', 910251, '2016-08-15 08:59:46.186311', '2016-08-11 05:15:47.66487', '2016-08-15 08:59:49.097018', 232, 0, 534, 534, 'Mgr.');
+INSERT INTO candidates VALUES (2, 'Barbora', 'Hrdličková', 'Praha', 1972, 'Barbora_Hrdlickova.jpg', 'image/jpeg', 61799, '2016-08-15 08:54:57.198073', '2016-08-11 05:42:51.188533', '2016-08-15 08:54:57.338167', 0, 0, 261, 261, 'Mgr.');
+INSERT INTO candidates VALUES (3, 'Filip', 'Mergental', 'Praha', 1976, 'Filip_Mergental.jpg', 'image/jpeg', 824392, '2016-08-13 10:27:37.413029', '2016-08-11 07:43:02.3053', '2016-08-13 10:27:49.692555', 0, 0, 800, 800, 'Mgr.');
+INSERT INTO candidates VALUES (6, 'Karolína', 'Bílková', 'Praha', 1984, 'Karolina_Bilkova.jpg', 'image/jpeg', 61269, '2016-08-15 08:51:24.334035', '2016-08-11 07:48:46.023455', '2016-08-15 08:51:41.597209', 0, 49, 320, 320, 'MUDr.');
+INSERT INTO candidates VALUES (8, 'Ladislav', 'Loebe', 'Brno', 1976, 'Ladislav_Loebe.jpg', 'image/jpeg', 2300867, '2016-08-13 10:26:34.853251', '2016-08-11 07:52:33.472474', '2016-08-13 10:26:49.571135', 0, 8, 533, 533, 'Mgr.');
+INSERT INTO candidates VALUES (9, 'Lenka', 'Honzátková', 'Praha', 1976, 'Lenka_Honzatkova.jpg', 'image/jpeg', 180307, '2016-08-15 08:54:24.030074', '2016-08-11 07:54:01.111542', '2016-08-15 08:54:24.630141', 0, 38, 533, 533, 'Mgr.');
+INSERT INTO candidates VALUES (12, 'Miroslav', 'Šperk', 'Hořice', 1984, 'Miroslav_Sperk.jpg', 'image/jpeg', 129598, '2016-08-15 09:14:51.505014', '2016-08-11 07:58:09.21938', '2016-08-15 09:14:56.794457', 0, 0, 720, 720, 'Mgr.');
+INSERT INTO candidates VALUES (13, 'Pavel', 'Šťastný, MBA', 'Praha', 1975, 'Pavel_Stastny.JPG', 'image/jpeg', 1149125, '2016-08-15 09:13:28.542278', '2016-08-11 07:59:30.964081', '2016-08-15 09:13:32.279221', 0, 0, 534, 534, 'Bc.');
+INSERT INTO candidates VALUES (14, 'Pavlína', 'Zvelebilová', 'Praha', 1981, 'Pavlina_Zvelebilova.JPG', 'image/jpeg', 4645528, '2016-08-15 09:08:06.838693', '2016-08-11 08:01:13.646677', '2016-08-15 09:08:09.477974', 0, 15, 533, 533, 'Mgr.');
+INSERT INTO candidates VALUES (18, 'Rostislav', 'Čichoň, Ph.D.', 'Praha až Ostrava', 1966, 'Rostislav_Cichon.jpg', 'image/jpeg', 1060614, '2016-08-15 09:11:37.430796', '2016-08-11 08:07:01.574014', '2016-08-15 09:11:39.748256', 0, 46, 754, 754, 'PhDr.');
+INSERT INTO candidates VALUES (19, 'Tomáš', 'Zelenka', 'Litvínov', 1975, 'Tomas_Zelenka.jpg', 'image/jpeg', 75176, '2016-08-15 09:06:25.533752', '2016-08-11 08:09:59.320281', '2016-08-15 09:06:26.163875', 0, 16, 709, 709, 'Ing.');
+INSERT INTO candidates VALUES (20, 'Veronika', 'Liďáková', 'Praha', 1981, 'Veronika_Lidakova.JPG', 'image/jpeg', 4558629, '2016-08-15 08:58:01.016958', '2016-08-11 08:11:06.60335', '2016-08-15 08:58:10.815355', 0, 35, 533, 533, 'Bc.');
+INSERT INTO candidates VALUES (21, 'Zbyněk', 'Sýkora, MBA', 'České Budějovice', 1984, 'Zbynek_Sykora.JPG', 'image/jpeg', 2130671, '2016-08-15 09:04:37.859587', '2016-08-11 08:12:14.104936', '2016-08-15 09:04:42.763619', 107, 0, 578, 578, 'Bc.');
 
 
 --
--- TOC entry 2451 (class 0 OID 41992)
--- Dependencies: 190
--- Data for Name: election_parts; Type: TABLE DATA; Schema: public; Owner: mat
+-- TOC entry 2047 (class 0 OID 30739)
+-- Dependencies: 176
+-- Data for Name: elections; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO elections VALUES (1, 'Volby do předsednictva a revizní komise 2016', '2016-09-15', '2016-10-15', NULL, NULL, '2016-08-12 15:03:52.950242', '2016-08-15 12:23:22.990334', '');
+
+
+--
+-- TOC entry 2049 (class 0 OID 30750)
+-- Dependencies: 178
+-- Data for Name: election_parts; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 INSERT INTO election_parts VALUES (2, 1, 'Revizní komise', 3, '2016-08-11 05:16:28.60713', '2016-08-12 15:31:31.718744');
@@ -67,9 +65,9 @@ INSERT INTO election_parts VALUES (1, 1, 'Předsednictvo', 6, '2016-08-11 05:16:
 
 
 --
--- TOC entry 2455 (class 0 OID 42026)
--- Dependencies: 194
--- Data for Name: candidate_participations; Type: TABLE DATA; Schema: public; Owner: mat
+-- TOC entry 2053 (class 0 OID 30784)
+-- Dependencies: 182
+-- Data for Name: candidate_participations; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 INSERT INTO candidate_participations VALUES (5, 5, 1, 'Na vozíku jsem od roku 2009 (úraz při sportu C6). Od roku 2010 jsem aktivní ragbista, od 2012 místopředseda Českého ragbyového svazu vozíčkářů, od 2014 místopředseda Českého svazu tělesně postižených sportovců. Od roku 2010 pracuji na soukromé klinice Canadian Medical Care.', 'Připomínkování legislativy
@@ -108,94 +106,76 @@ INSERT INTO candidate_participations VALUES (22, 21, 1, 'Pocházím z Českého 
 
 
 --
--- TOC entry 2462 (class 0 OID 0)
--- Dependencies: 193
--- Name: candidate_participations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mat
+-- TOC entry 2060 (class 0 OID 0)
+-- Dependencies: 181
+-- Name: candidate_participations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('candidate_participations_id_seq', 23, true);
 
 
 --
--- TOC entry 2463 (class 0 OID 0)
--- Dependencies: 185
--- Name: candidates_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mat
+-- TOC entry 2061 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: candidates_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('candidates_id_seq', 22, true);
 
 
 --
--- TOC entry 2464 (class 0 OID 0)
--- Dependencies: 189
--- Name: election_parts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mat
+-- TOC entry 2062 (class 0 OID 0)
+-- Dependencies: 177
+-- Name: election_parts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('election_parts_id_seq', 2, true);
 
 
 --
--- TOC entry 2465 (class 0 OID 0)
--- Dependencies: 187
--- Name: elections_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mat
+-- TOC entry 2063 (class 0 OID 0)
+-- Dependencies: 175
+-- Name: elections_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('elections_id_seq', 1, true);
 
 
 --
--- TOC entry 2445 (class 0 OID 33747)
--- Dependencies: 184
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: mat
---
-
-INSERT INTO users VALUES (1, '2016-08-03 19:59:34.6654', '2016-08-12 14:39:21.363842', 'admin@clockstar.cz', '$2a$10$OU7Qo2qFZtcs8DZBBRSbreDHhI6Q.k/ofV.v2FL0mOHFes26toqHu', NULL, NULL, NULL, 5, '2016-08-12 14:39:21.358635', '2016-08-12 13:53:25.872445', '::1', '::1', NULL, '', '', 'admin', NULL, NULL, NULL);
-
-
---
--- TOC entry 2466 (class 0 OID 0)
--- Dependencies: 183
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mat
---
-
-SELECT pg_catalog.setval('users_id_seq', 1, true);
-
-
---
--- TOC entry 2453 (class 0 OID 42009)
--- Dependencies: 192
--- Data for Name: voters; Type: TABLE DATA; Schema: public; Owner: mat
+-- TOC entry 2051 (class 0 OID 30767)
+-- Dependencies: 180
+-- Data for Name: voters; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 
 
 --
--- TOC entry 2467 (class 0 OID 0)
--- Dependencies: 191
--- Name: voters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mat
+-- TOC entry 2064 (class 0 OID 0)
+-- Dependencies: 179
+-- Name: voters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('voters_id_seq', 1, false);
 
 
 --
--- TOC entry 2457 (class 0 OID 42049)
--- Dependencies: 196
--- Data for Name: votes; Type: TABLE DATA; Schema: public; Owner: mat
+-- TOC entry 2055 (class 0 OID 30807)
+-- Dependencies: 184
+-- Data for Name: votes; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 
 
 --
--- TOC entry 2468 (class 0 OID 0)
--- Dependencies: 195
--- Name: votes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: mat
+-- TOC entry 2065 (class 0 OID 0)
+-- Dependencies: 183
+-- Name: votes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('votes_id_seq', 1, false);
 
 
--- Completed on 2016-08-15 10:20:18 CEST
+-- Completed on 2016-08-15 17:26:07
 
 --
 -- PostgreSQL database dump complete
