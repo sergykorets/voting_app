@@ -16,7 +16,7 @@ function tinymce_ready()
 		fix_list_elements : true, /* Fix nested ul/ol elements */
 		paste_as_text: true, /* Paste as text set as default */
 		paste_word_valid_elements: "b,strong,i,em,h1,h2,h3", /* Paste form word cleanup */
-		content_css: ["/assets/gumby/css/gumby.css", "/assets/libraries/tinymce.css"],
+		content_css: ["/assets/libraries/tinymce.css"],
 		entity_encoding : "raw", /* All characters will be stored in non-entity form except &amp; &lt; &gt; &quot; */
 		relative_urls: false, /* Don't convert URLs to relative paths */
 		image_list: "/admin/website/text_attachments/images",
