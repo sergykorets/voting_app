@@ -72,10 +72,7 @@ class Election < ActiveRecord::Base
 	# *************************************************************************
 
 	def self.current
-		if @current.nil?
-			@current = Election.first
-		end
-		return @current
+		return Election.first
 	end
 
 end
