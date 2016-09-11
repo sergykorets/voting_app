@@ -5,21 +5,11 @@
 # * Abstract engine controller
 # *
 # * Author: Matěj Outlý
-# * Date  : 12. 7. 2016
+# * Date  : 26. 6. 2015
 # *
 # *****************************************************************************
 
-class RestrictedController < ApplicationController
-
-	#
-	# Authenticate before every action
-	#
-	before_action :authenticate_user!
-
-protected
-
-	def set_election
-		@election = Election.current
+module RicDevise
+	class ApplicationController < ::ApplicationController
 	end
-	
 end

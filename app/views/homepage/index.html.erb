@@ -21,9 +21,11 @@
 		</div>
 	</div>
 
+	<%#= link_to "Sign out", ric_devise.destroy_user_session_path, method: :delete %>
+
 	<% tabs = rug_tabs %>
 	<% tabs.tab "election_content", Election.human_attribute_name("content") do %>
-		<%= @election.content.html_safe %>
+		<%= @election.content %>
 	<% end %>
 	<% @election.election_parts.order(id: :asc).each do |election_part| %>
 		<% tabs.tab "election_part_#{election_part.id}", election_part.name do %>

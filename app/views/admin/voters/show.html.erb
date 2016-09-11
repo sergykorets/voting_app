@@ -1,0 +1,14 @@
+<%= render layout: "ric_admin/layouts/with_right_side" do %>
+	<%= rug_show_table_for(@voter, { 
+		name: :name,
+		email: :string
+	}) %>
+	<% if @voter.user %>
+		<h3>User account</h3>
+		<%= rug_show_table_for(@voter.user, { 
+			email: :string,
+			sign_in_count: :integer,
+			current_sign_in_at: :datetime,
+		}) %>
+	<% end %>
+<% end %>

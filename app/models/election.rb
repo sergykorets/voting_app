@@ -15,7 +15,7 @@ class Election < ActiveRecord::Base
 	# Structure
 	# *************************************************************************
 	
-	has_many :voters, dependent: :destroy
+	has_and_belongs_to_many :voters
 	has_many :election_parts, dependent: :destroy
 	
 	# *************************************************************************

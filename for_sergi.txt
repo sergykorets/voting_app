@@ -7,7 +7,7 @@
 - voters x elections is n:m reference - requires new table elections_voters and using of has_and_belongs to many
 - Filter and search functionality is defined only for "high level" models like candidates, voters and elections, not for votes, participations and other stuff
 - Attachment can be defined with 300x300# style. Hash sign means that picture is cropped to this exact size
-- Layout with right side shoul'd be user also for index actions
+- Layout with right side should be used also for index actions
 - Primary order column should be specified in controller for search and filter actions
 - For filters to be working DB extension unaccent must be enabled (migrations)
 - show table type :picture must be defined with thumb_style option (generators are not allmighty)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815120955) do
+ActiveRecord::Schema.define(version: 20160909082315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,53 @@ ActiveRecord::Schema.define(version: 20160815120955) do
     t.text     "content"
   end
 
+  create_table "elections_voters", id: false, force: :cascade do |t|
+    t.integer "election_id"
+    t.integer "voter_id"
+  end
+
+  create_table "notification_receivers", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "sent_at"
+    t.datetime "received_at"
+    t.integer  "notification_id"
+    t.integer  "user_id"
+    t.string   "state"
+  end
+
+  create_table "notification_templates", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "key"
+    t.string   "description"
+    t.string   "subject"
+    t.text     "message"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "kind"
+    t.string   "subject"
+    t.text     "message"
+    t.string   "url"
+    t.integer  "author_id"
+  end
+
+  create_table "queue_classic_jobs", id: :bigserial, force: :cascade do |t|
+    t.text     "q_name",                         null: false
+    t.text     "method",                         null: false
+    t.json     "args",                           null: false
+    t.datetime "locked_at"
+    t.integer  "locked_by"
+    t.datetime "created_at",   default: "now()"
+    t.datetime "scheduled_at", default: "now()"
+  end
+
+  add_index "queue_classic_jobs", ["q_name", "id"], name: "idx_qc_on_name_only_unlocked", where: "(locked_at IS NULL)", using: :btree
+  add_index "queue_classic_jobs", ["scheduled_at", "id"], name: "idx_qc_on_scheduled_at_only_unlocked", where: "(locked_at IS NULL)", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -93,14 +140,10 @@ ActiveRecord::Schema.define(version: 20160815120955) do
   end
 
   create_table "voters", force: :cascade do |t|
-    t.integer  "election_id"
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "name_firstname"
+    t.string "name_lastname"
+    t.string "email"
   end
-
-  add_index "voters", ["election_id"], name: "index_voters_on_election_id", using: :btree
 
   create_table "votes", force: :cascade do |t|
     t.integer  "voter_id"
@@ -117,7 +160,6 @@ ActiveRecord::Schema.define(version: 20160815120955) do
   add_foreign_key "candidate_participations", "candidates"
   add_foreign_key "candidate_participations", "election_parts"
   add_foreign_key "election_parts", "elections"
-  add_foreign_key "voters", "elections"
   add_foreign_key "votes", "candidates"
   add_foreign_key "votes", "election_parts"
   add_foreign_key "votes", "voters"

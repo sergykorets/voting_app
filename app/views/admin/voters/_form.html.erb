@@ -1,0 +1,7 @@
+<%= rug_form_for(@voter, create_url: "main_app.admin_voters_path", update_url: "main_app.admin_voter_path") do |f| %>
+	<%= f.token_input_row :election_ids, main_app.search_admin_elections_path, as: :elections, value_attr: :id, label_attr: :name %>
+	<%= f.name_row :name, title: false %>
+	<%= f.text_input_row :email %>
+	<%= f.primary_button_row :submit %>
+	<%= f.back_link_button_row %>
+<% end %>

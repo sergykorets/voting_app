@@ -48,6 +48,12 @@ gem 'bootstrap-sass', '~> 3.3.6'
 # Pikaday dependencies
 gem 'momentjs-rails'
 
+# Background jobs
+gem "queue_classic"
+
+# Authorization
+gem 'pundit'
+
 # Rug
 gem 'rug_support', '1.16.5'
 gem 'rug_builder', '1.16.5'
@@ -68,6 +74,7 @@ gem 'ric_user', '1.29.11'
 gem 'ric_devise', '1.29.11'
 gem 'ric_admin_v2', '1.29.11'
 gem 'ric_account', '1.29.11'
+gem 'ric_notification', '1.29.11'
 
 # gem 'ric_user', path: '/home/serhii/Projects/Rails/ric/ric_user'
 # gem 'ric_devise', path: '/home/serhii/Projects/Rails/ric/ric_devise'

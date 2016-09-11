@@ -115,6 +115,10 @@ GEM
       mime-types
       mimemagic (= 0.3.0)
     pg (0.18.4)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
+    queue_classic (3.1.0)
+      pg (>= 0.17, < 0.19)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
@@ -156,6 +160,8 @@ GEM
       gretel (~> 3.0)
     ric_devise (1.29.11)
       devise (~> 3.5)
+      rails (~> 4.2)
+    ric_notification (1.29.11)
       rails (~> 4.2)
     ric_user (1.29.11)
       devise (~> 3.5)
@@ -231,11 +237,14 @@ DEPENDENCIES
   momentjs-rails
   paperclip (~> 4.2)
   pg
+  pundit
+  queue_classic
   quiet_assets
   rails (= 4.2.6)
   ric_account (= 1.29.11)
   ric_admin_v2 (= 1.29.11)
   ric_devise (= 1.29.11)
+  ric_notification (= 1.29.11)
   ric_user (= 1.29.11)
   rug (= 1.16.5)
   rug_builder (= 1.16.5)

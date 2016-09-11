@@ -1,0 +1,12 @@
+<%= render layout: "ric_admin/layouts/with_right_side" do %>
+	<%= rug_index_table_for(@voters, { 
+		name_lastname: :string,
+		name_firstname: :string,
+		email: :string
+	}, paths: {
+		show: "main_app.admin_voter_path", 
+		new: "main_app.new_admin_voter_path",
+		edit: "main_app.edit_admin_voter_path", 
+		destroy: "main_app.admin_voter_path"
+	}, sorting: true, pagination: true, summary: true) %>
+<% end %>

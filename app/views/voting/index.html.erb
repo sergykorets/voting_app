@@ -1,0 +1,29 @@
+<% if @election %>
+	<div class="row">    
+		<div class="col-md-10">
+			<div class="page-header">
+				<h1>
+					Česká asociace paraplegiků - CZEPA<br/>
+					<small class="text-muted"><%= @election.name %></small>
+				</h1>
+			</div>
+		</div>
+		<div class="col-md-2 text-right hide-md">
+			<%= image_tag(image_url("logo.png")) %>
+		</div>
+		
+	</div>
+	<%= form_tag(vote_voting_index_path, :method=>'put', :multipart => true) do %>
+		<% tabs = rug_tabs %>
+		<% tabs.tab "election_content", Election.human_attribute_name("content") do %>
+			<%= @election.content %>
+		<% end %>
+		<% @election.election_parts.order(id: :asc).each do |election_part| %>
+			<% tabs.tab "election_part_#{election_part.id}", election_part.name do %>
+				<%= render partial: "election_part", locals: { election_part: election_part } %>
+			<% end %>
+		<% end %>
+		<%= tabs.render %>
+		<%= submit_tag 'Vote' %>
+	<% end %>		
+<% end %>

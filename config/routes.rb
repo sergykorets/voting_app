@@ -14,30 +14,16 @@ Rails.application.routes.draw do
 	# Root
 	root "homepage#index"
 	
-	#
-	# RicDevise
-	#
-	mount RicDevise::Engine => "/auth"
-
-	#
-	# RicAdmin
-	#
-	mount RicAdmin::Engine => "/admin"
-
-	#
-	# RicAccount
-	#
-	mount RicAccount::Engine => "/admin"
-
-	#
-	# RicUser
-	#
-	mount RicUser::AdminEngine => "/admin/users", as: :ric_user_admin
-
+	resources :voting do 
+		collection do
+			put "vote"
+		end
+	end
+	
 	#
 	# Admin
 	#
-	namespace :admin do
+	namespace :admin do	
 
 		root "dashboard#index"
 
@@ -68,7 +54,44 @@ Rails.application.routes.draw do
 				end
 			end
 		end
+		
+		resources :voters do
+			collection do
+				post "filter"
+				get "search"
+			end
+			member do
+				put "user_create"
+				put "user_regenerate_password"
+				delete "user_destroy"
+			end
+		end	
 				
 	end
+
+	#
+	# RIC Devise
+	#
+	mount RicDevise::Engine => "/devise"
+
+	#
+	# RIC Admin
+	#
+	mount RicAdmin::Engine => "/admin/clockstar"
+
+	#
+	# RicAccount
+	#
+	mount RicAccount::Engine => "/admin"
+
+	#
+	# RicUser
+	#
+	mount RicUser::AdminEngine => "/admin", as: :ric_user_admin
+
+	#
+	# RIC Notification
+	#
+	mount RicNotification::AdminEngine => "/admin", as: :ric_notification_admin
 
 end

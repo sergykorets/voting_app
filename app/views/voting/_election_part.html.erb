@@ -1,0 +1,3 @@
+<% election_part.candidate_participations.order(position: :asc).each do |candidate_participation| %>
+	<%= render partial: "candidate_participation", locals: { candidate_participation: candidate_participation } %>
+<% end %>

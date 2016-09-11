@@ -10,6 +10,27 @@ items:
     icon: hand-paper-o
     active_if: "controller_name == 'elections'"
   -
+    label: headers.admin.voters.index
+    url: main_app.admin_voters_path
+    icon: user
+    active_if: "controller_name == 'voters'"
+  -
+    type: delimiter
+  -
+    label: headers.ric_notification.admin_notifications.index
+    url: ric_notification_admin.notifications_path
+    dropdown:
+      -
+        label: headers.ric_notification.admin_notifications.index
+        url: ric_notification_admin.notifications_path
+        icon: comment
+        active_if: "controller_name == 'admin_notifications'"
+      -
+        label: headers.ric_notification.admin_notification_templates.index
+        url: ric_notification_admin.notification_templates_path
+        icon: cog
+        active_if: "controller_name == 'admin_notification_templates'"
+  -
     type: delimiter
   -
     label: headers.web

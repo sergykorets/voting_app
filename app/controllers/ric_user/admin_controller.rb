@@ -11,6 +11,5 @@
 
 module RicUser
 	class AdminController < ::AdminController
-
 	end
 end

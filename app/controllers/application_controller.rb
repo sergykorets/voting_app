@@ -29,11 +29,33 @@ class ApplicationController < ActionController::Base
 	end
 
 	def after_sign_out_path_for(resource)
-		main_app.admin_root_path
+		main_app.root_path
 	end
 
 	def after_sign_in_path_for(resource)
-		stored_location_for(:user) || main_app.admin_root_path
+		stored_location_for(:user) || main_app.root_path
+	end
+
+	# *************************************************************************
+	# Authorization
+	# *************************************************************************
+
+	#
+	# Authorization
+	#
+	include Pundit
+
+	#
+	# Rescue from authorization exception
+	#
+	rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+	#
+	# Rescue from authorization exception
+	#
+	def user_not_authorized(exception)
+		policy_name = exception.policy.class.to_s.underscore
+		redirect_to main_app.root_path, alert: I18n.t("pundit.#{policy_name}.#{exception.query}")
 	end
 
 end

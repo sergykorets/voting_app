@@ -1,0 +1,9 @@
+<% if action_name == "index" %>
+	<%= rug_form_for(@filter_voter, url: main_app.filter_admin_voters_path) do |f| %>
+	<div class="form-inline">
+		<%= f.text_input_row :name_for_filter, :text_field, label: Voter.human_attribute_name("name")  %>
+		<%= f.picker_row :election_id_for_filter, Election.order(name: :asc), :id, :name, enable_null: true %>
+		<%= f.primary_button_row :submit, label: t("helpers.submit.filter") %>
+	</div>
+	<% end %>
+<% end %>

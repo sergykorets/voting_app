@@ -45,6 +45,18 @@ class AdminController < ApplicationController
 	#
 	component RicAdmin::FooterCopyComponent
 
+	#
+	# Authenticate before every action
+	#
+	before_action :authenticate_user!
+
+	#
+	# Controller authorization
+	#
+	before_action do
+		authorize :admin, :show?
+	end
+
 protected
 	
 	# *************************************************************************

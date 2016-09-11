@@ -14,7 +14,6 @@ class HomepageController < PublicController
 	before_action :set_election
 
 	def index
-		#@candidate_participations = CandidateParticipation.all
 	end
 
 end

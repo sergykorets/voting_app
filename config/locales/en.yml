@@ -4,6 +4,8 @@ en:
     homepage:
       index: Homepage
     admin:
+      voters:
+        index: Voters
       dashboard:
         index: Dashboard
       candidates: Candidates

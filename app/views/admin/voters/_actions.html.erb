@@ -1,0 +1,15 @@
+<%= rug_menu_for(@voter, name: "actions", path_base: "main_app.admin_voter") do |m| %>
+	<%= m.index_item %>
+	<%= m.new_item %>
+	<%= m.show_item %>
+	<%= m.edit_item %>
+	<% if @voter && !@voter.new_record? %>
+		<% if @voter.user %>
+			<%= m.item t("headers.admin.voters.user_regenerate_password"), main_app.user_regenerate_password_admin_voter_path(@voter), icon: "lock", method: :put %>
+			<%= m.item t("headers.admin.voters.user_destroy"), main_app.user_destroy_admin_voter_path(@voter), icon: "trash", method: :delete %>
+		<% else %>
+			<%= m.item t("headers.admin.voters.user_create"), main_app.user_create_admin_voter_path(@voter), icon: "user-plus", method: :put %>
+		<% end %>
+	<% end %>
+	<%= m.destroy_item %>
+<% end %>

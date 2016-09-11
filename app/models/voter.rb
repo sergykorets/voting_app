@@ -17,17 +17,27 @@ class Voter < ActiveRecord::Base
 	
 	has_one :user, class_name: RicUser.user_model.to_s, as: :person
 	has_many :votes, dependent: :destroy
-	belongs_to :election
-	
+	has_and_belongs_to_many :elections
+
 	# *************************************************************************
 	# Validators
 	# *************************************************************************
 	
-	validates_presence_of :election_id
+	#validates_presence_of :election_id
 
+
+	# *************************************************************************
+	# Name
+	# *************************************************************************
+
+	name_column :name, title: false
+	add_methods_to_json :name_formatted
+	
 	# *************************************************************************
 	# Scopes
 	# *************************************************************************
+	
+	attr_accessor :election_id_for_filter
 
 	#
 	# Filter
@@ -38,8 +48,15 @@ class Voter < ActiveRecord::Base
 		result = all
 
 		# Name
-		if !params[:name].blank?
-			result = result.where("lower(unaccent(name)) LIKE ('%' || lower(unaccent(trim(?))) || '%')", params[:name].to_s)
+		if !params[:name_for_filter].blank?
+			result = result.where("
+				(lower(unaccent(name_lastname)) LIKE ('%' || lower(unaccent(trim(:name_for_filter))) || '%')) OR
+				(lower(unaccent(name_firstname)) LIKE ('%' || lower(unaccent(trim(:name_for_filter))) || '%'))
+			", name_for_filter: params[:name_for_filter].to_s)
+		end
+
+		if !params[:election_id_for_filter].blank?
+			result = result.joins(:elections).where(elections: { id: params[:election_id_for_filter] }).group("voters.id")
 		end
 
 		result
@@ -53,8 +70,20 @@ class Voter < ActiveRecord::Base
 			all
 		else
 			where("
-				(lower(unaccent(name)) LIKE ('%' || lower(unaccent(trim(:query))) || '%'))
-			", query: query.to_s)
+				(lower(unaccent(name_lastname)) LIKE ('%' || lower(unaccent(trim(:query))) || '%')) OR
+				(lower(unaccent(name_firstname)) LIKE ('%' || lower(unaccent(trim(:query))) || '%'))
+			", query: query)
+		end
+	end
+
+	def create_user
+		user = self.build_user(email: self.email, role: "voter")
+		new_password = user.regenerate_password(disable_email: true)
+		if new_password
+			RicNotification.notify([:welcome_voter, self, new_password], user)
+			return user
+		else
+			return nil
 		end
 	end
 	
@@ -65,7 +94,8 @@ class Voter < ActiveRecord::Base
 	def self.permitted_columns
 		[
 			{ :name => [:firstname, :lastname] },
-			:email
+			:email,
+			:election_ids
 		]
 	end
 

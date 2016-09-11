@@ -4,6 +4,8 @@ cs:
     homepage:
       index: Homepage
     admin:
+      voters:
+        index: Voliči
       dashboard:
         index: Dashboard
       elections:
