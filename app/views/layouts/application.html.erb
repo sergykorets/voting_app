@@ -10,7 +10,33 @@
 <body>
 	<div class="container">
 		<%= render partial: "layouts/application/flash" %>
-		<%= yield %>
+		<% if @election %>
+			<div class="row">    
+				<div class="col-md-10">
+					<div class="page-header">
+						<h1>
+							Česká asociace paraplegiků - CZEPA<br/>
+							<small class="text-muted"><%= @election.name %></small>
+						</h1>
+					</div>
+				</div>
+				<div class="col-md-2 text-right hide-md">
+					<%= image_tag(image_url("logo.png")) %>
+				</div>
+				<% if params[:controller] == "votings" %>
+					<div class="col-md-10 text-right">
+						<strong><%= @voter.email %></strong> <%= rug_button "Sign out", ric_devise.destroy_user_session_path, method: "delete" %>
+					</div>
+				<% end %>
+			</div>
+			<% if params[:controller] == "votings" %>
+				<hr>
+			<% end %>
+			<%= yield %>
+		<% else %>
+			<%= yield %>
+		<% end %>
+
 	</div>	
 </body>
 </html>

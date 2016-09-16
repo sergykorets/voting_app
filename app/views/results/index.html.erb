@@ -1,0 +1,9 @@
+<% tabs = rug_tabs %>
+<% j=1 %>
+<% @election.election_parts.order(id: :asc).each do |election_part| %>
+	<% tabs.tab "election_part_#{election_part.id}", election_part.name do %>
+		<%= render partial: "election_part", locals: { election_part: election_part, j: j } %>
+		<% j = j+1 %>
+	<% end %>
+<% end %>
+<%= tabs.render %>

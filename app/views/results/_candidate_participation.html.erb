@@ -1,0 +1,26 @@
+<% if i==1 && j==1 %>
+	<div class="panel panel-default election_part">
+<% elsif ((i==1 || i==2) && j==2) %>
+	<div class="panel panel-default election_part">
+<% else %>
+	<div class="panel panel-default">
+<% end %>
+	<div class="panel-body">
+		<div class="row">    
+			<div class="col-md-3 text-center">
+				<%= image_tag candidate_participation.candidate.photo.url(:thumb), class: "img-circle" %>
+			</div>
+			<div class="col-md-6">
+				<h2 class="featurette-heading"><%= candidate_participation.candidate.name_formatted %>
+					<small class="text-muted"><%= candidate_participation.candidate.address %></small>
+				</h2>
+				<p>Rok narození: <%= candidate_participation.candidate.birth_year %></p>
+			</div>
+			<div class="col-md-3 text-center">
+				</br></br></br>
+				<h1><strong><%= candidate_participation.votes %></strong></h1>
+			</div>
+		</div>
+	</div>
+</div>
+	

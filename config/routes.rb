@@ -14,12 +14,8 @@ Rails.application.routes.draw do
 	# Root
 	root "homepage#index"
 	
-	resources :voting do 
-		collection do
-			put "vote"
-		end
-	end
-	
+	resources :votings, only: [:new, :create] 
+	resources :results	
 	#
 	# Admin
 	#

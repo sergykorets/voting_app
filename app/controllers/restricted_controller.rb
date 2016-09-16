@@ -21,5 +21,13 @@ protected
 	def set_election
 		@election = Election.current
 	end
+
+	def set_voter
+		@voter = current_user.voter
+		if @voter.nil?
+			#redirect_to ric_devise.new_user_session_path
+			@voter = Voter.last
+		end
+	end
 	
 end

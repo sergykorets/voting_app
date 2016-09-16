@@ -16,14 +16,12 @@ class Candidate < ActiveRecord::Base
 	# *************************************************************************
 	
 	has_many :candidate_participations, dependent: :destroy
-	has_many :votes, dependent: :destroy
+	has_and_belongs_to_many :votes
 
 	# *************************************************************************
 	# Validators
 	# *************************************************************************
 
-	#has_attached_file :photo, styles: { full: "800x800>", thumb: "200x200#" }
-	#validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 	croppable_picture_column :photo, styles: { full: "800x800>", thumb: "200x200#" }
 
 	# *************************************************************************
@@ -87,5 +85,6 @@ class Candidate < ActiveRecord::Base
 			:photo_perform_cropping,
 		]
 	end
+
 
 end

@@ -1,0 +1,5 @@
+<% i=1 %>
+<% election_part.candidate_participations.order(votes: :desc).each do |candidate_participation| %>
+	<%= render partial: "candidate_participation", locals: { candidate_participation: candidate_participation, i: i, j: j } %>
+	<% i= i+1 %>
+<% end %>

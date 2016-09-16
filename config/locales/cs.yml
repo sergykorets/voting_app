@@ -6,12 +6,20 @@ cs:
     admin:
       voters:
         index: Voliči
+        show: Volič
+        user_create: Vytvořit uživ. účet
+        user_regenerate_password: Přegenerovat heslo
+        user_destroy: Smazat uživ. účet
       dashboard:
         index: Dashboard
       elections:
         index: Volby
+        show: Volba
       candidates:
         index: Kandidáti
+        show: Kandidát
+      results: 
+        index: Výsledky
 
   activerecord:
     attributes:
@@ -45,4 +53,12 @@ cs:
         election_id: Volby
         name: Název
         max_votes_for_candidate: Maximální počet hlasů na voliče
+      ric_notification/notification_template:
+        key_values:
+          welcome_voter: Uvítání nového voliče
+    notices:
+      models:
+        parent:
+          user_destroy: Uživatelský účet voliče byl úspěšně smazán.
+          user_create: Volič byl úspěšně vytvořen.    
      

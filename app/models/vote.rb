@@ -15,7 +15,7 @@ class Vote < ActiveRecord::Base
 	# Structure
 	# *************************************************************************
 	
-	belongs_to :candidate
+	has_and_belongs_to_many :candidates
 	belongs_to :voter
 	belongs_to :election_part
 	
@@ -23,18 +23,20 @@ class Vote < ActiveRecord::Base
 	# Validators
 	# *************************************************************************
 	
-	validates_presence_of :candidate_id, :voter_id, :election_part_id
-
+	validates_presence_of :voter_id, :election_part_id
+	#validates_inclusion_of :value, in: [1]
+	
 	# *************************************************************************
 	# Columns
 	# *************************************************************************
 	
 	def self.permitted_columns
 		[
-			:candidate_id, 
 			:voter_id, 
 			:election_part_id
 		]
 	end
+
+	
 
 end

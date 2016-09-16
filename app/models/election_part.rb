@@ -63,4 +63,14 @@ class ElectionPart < ActiveRecord::Base
 
 	add_methods_to_json :name_with_election
 
+	# *************************************************************************
+	# Votes
+	# *************************************************************************
+
+	def recalculate_votes
+		self.candidate_participations.each do |candidate_participation|
+			candidate_participation.recalculate_votes
+		end
+	end
+
 end

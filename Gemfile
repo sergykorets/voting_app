@@ -60,7 +60,7 @@ gem 'rug_builder', '1.16.5'
 gem 'rug_record', '1.16.5'
 gem 'rug_controller', '1.16.5'
 gem 'rug_view', '1.16.5'
-gem 'rug', '1.16.5'
+gem 'rug', '1.16.5', :source => 'http://gems.clockstar.cz/'
 
 #gem 'rug_support', path: '/Users/mat/Projects/ruby-on-rails/rug/rug_support'
 #gem 'rug_builder', path: '/Users/mat/Projects/ruby-on-rails/rug/rug_builder'

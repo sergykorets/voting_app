@@ -1,0 +1,66 @@
+<%= rug_form_for(@voting, url: main_app.votings_path, method: "post") do |f| %>
+	<% if @voting.confirm_step? %>
+		<div class="panel panel-default election_part">
+			<div class="panel-body">
+				<div class="row">    
+					<div class="col-md-12 text-center">
+						<h1><strong>You have selected following candidates:</strong></h1><br/>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<% @election.election_parts.order(id: :asc).each do |election_part| %>
+			<h3><%= election_part.name %></h3>
+			<% @voting.candidate_ids["election_part_#{election_part.id}"].each do |candidate_id| %>
+				<% candidate_participation = CandidateParticipation.where(election_part_id: election_part.id, candidate_id: candidate_id).first %>
+				<% if !candidate_participation.nil? %>
+					<%= render partial: "candidate_participation", locals: { candidate_participation: candidate_participation } %>
+				<% end %>
+			<% end %>
+		<% end %>
+
+	<% else %>
+		<%if @voting.first_step? %>
+			<div class="panel panel-default election_part">
+				<div class="panel-body">
+					<div class="row">    
+						<div class="col-md-12 text-center">
+							<h1><strong><%= ElectionPart.first.name %></strong></h1><br/>
+						</div>
+					</div>
+				</div>
+			</div>
+		<% elsif !(@voting.last_step? && @voting.first_step?) %>
+			<div class="panel panel-default election_part">
+				<div class="panel-body">
+					<div class="row">    
+						<div class="col-md-12 text-center">
+							<h1><strong><%= ElectionPart.last.name %></strong></h1><br/>
+						</div>
+					</div>
+				</div>
+			</div>
+		<% end %>
+
+		<% if !@voting.first_step? %>
+			<%= f.submit t("general.back").capitalize, :name => "back_button", class: "btn btn-md" %>
+		<% end %>
+		<% if @voting.last_step? %>
+			<%= f.submit "Confirm", class: "btn btn-md btn-primary" %>
+		<% else %>
+			<%= f.submit "Next step", class: "btn btn-md btn-primary" %>
+		<% end %>
+		<br/><br/>
+		<%= render partial: "election_part", locals: { election_part: @voting.election_part } %>	
+	<% end %>
+
+	<% if !@voting.first_step? %>
+		<%= f.submit t("general.back").capitalize, :name => "back_button", class: "btn btn-md" %>
+	<% end %>
+	<% if @voting.last_step? %>
+		<%= f.submit "Confirm", class: "btn btn-md btn-primary" %>
+	<% else %>
+		<%= f.submit "Next step", class: "btn btn-md btn-primary" %>
+	<% end %>
+<% end %>

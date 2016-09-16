@@ -1,36 +1,17 @@
-<% if @election %>
-	<div class="row">    
-		<div class="col-md-10">
-			<div class="page-header">
-				<h1>
-					Česká asociace paraplegiků - CZEPA<br/>
-					<small class="text-muted"><%= @election.name %></small>
-				</h1>
-			</div>
-		</div>
-		<div class="col-md-2 text-right hide-md">
-			<%= image_tag(image_url("logo.png")) %>
-		</div>
-		
+<div class="panel panel-default text-center">
+	<div class="panel-body">
+		<%= button_to "Začít hlasovat", main_app.new_voting_path, method: :get, class: "btn btn-lg btn-primary" %><br/>
+		Hlasování bude možné od 26. 9. 2016 do 2. 10. 2016
 	</div>
+</div>
 
-	<div class="panel panel-default text-center">
-		<div class="panel-body">
-			<button type="button" class="btn btn-lg btn-primary" disabled="disabled">Začít hlasovat</button><br/><br/>
-			Hlasování bude možné od 26. 9. 2016 do 2. 10. 2016
-		</div>
-	</div>
-
-	<%#= link_to "Sign out", ric_devise.destroy_user_session_path, method: :delete %>
-
-	<% tabs = rug_tabs %>
-	<% tabs.tab "election_content", Election.human_attribute_name("content") do %>
-		<%= @election.content %>
-	<% end %>
-	<% @election.election_parts.order(id: :asc).each do |election_part| %>
-		<% tabs.tab "election_part_#{election_part.id}", election_part.name do %>
-			<%= render partial: "election_part", locals: { election_part: election_part } %>
-		<% end %>
-	<% end %>
-	<%= tabs.render %>
+<% tabs = rug_tabs %>
+<% tabs.tab "election_content", Election.human_attribute_name("content") do %>
+	<%= @election.content %>
 <% end %>
+<% @election.election_parts.order(id: :asc).each do |election_part| %>
+	<% tabs.tab "election_part_#{election_part.id}", election_part.name do %>
+		<%= render partial: "election_part", locals: { election_part: election_part } %>
+	<% end %>
+<% end %>
+<%= tabs.render %>

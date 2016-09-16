@@ -12,7 +12,7 @@ items:
   -
     label: headers.admin.voters.index
     url: main_app.admin_voters_path
-    icon: user
+    icon: users
     active_if: "controller_name == 'voters'"
   -
     type: delimiter
@@ -36,4 +36,7 @@ items:
     label: headers.web
     url: main_app.root_path
     icon: globe
-    
+  -
+    label: headers.admin.results.index
+    url: main_app.results_path
+    icon: list    
