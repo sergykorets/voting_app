@@ -24,7 +24,6 @@ class Vote < ActiveRecord::Base
 	# *************************************************************************
 	
 	validates_presence_of :voter_id, :election_part_id
-	#validates_inclusion_of :value, in: [1]
 	
 	# *************************************************************************
 	# Columns

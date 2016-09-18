@@ -151,6 +151,11 @@ class Admin::VotersController < AdminController
 		redirect_to admin_voter_path(@voter), notice: I18n.t("activerecord.notices.models.parent.user_destroy")
 	end
 
+	def import
+		Voter.import(params[:file])
+		redirect_to admin_voters_url, notice: "Voters imported"
+	end
+
 protected
 
 	# *************************************************************************

@@ -58,6 +58,8 @@ cs:
           welcome_voter: Uvítání nového voliče
     notices:
       models:
+        voter:
+          destroy: Volič byl úspěšně smazán.
         parent:
           user_destroy: Uživatelský účet voliče byl úspěšně smazán.
           user_create: Volič byl úspěšně vytvořen.    

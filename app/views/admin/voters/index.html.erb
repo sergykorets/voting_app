@@ -9,4 +9,12 @@
 		edit: "main_app.edit_admin_voter_path", 
 		destroy: "main_app.admin_voter_path"
 	}, sorting: true, pagination: true, summary: true) %>
+
+	<%= form_tag import_admin_voters_path, multipart: true do %>
+		<%= file_field_tag :file %>
+		<%= submit_tag "Import voters" %>
+	<% end %>
+
+
+
 <% end %>

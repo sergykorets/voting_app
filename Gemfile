@@ -54,6 +54,7 @@ gem "queue_classic"
 # Authorization
 gem 'pundit'
 
+
 # Rug
 gem 'rug_support', '1.16.5'
 gem 'rug_builder', '1.16.5'

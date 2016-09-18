@@ -8,6 +8,7 @@
 # * Date  : 10. 8. 2016
 # *
 # *****************************************************************************
+require 'roo'
 
 class Voter < ActiveRecord::Base
 
@@ -90,6 +91,34 @@ class Voter < ActiveRecord::Base
 			:email,
 			:election_ids
 		]
+	end
+
+	def self.import(file)
+		CSV.foreach(file.path, headers: true) do |row|
+			Voter.create! row.to_hash
+		end
+	end
+
+	def save
+		ActiveRecord::Base.transaction do 
+			
+			# Create vote instance for each step
+			self.steps.each do |step|
+				election_part = @election_parts[step]
+				if election_part
+					vote = Vote.find_or_create_by(
+						election_part_id: election_part.id,
+						voter_id: @voter.id
+					)
+					vote.candidate_ids = @candidate_ids[step]
+					election_part.recalculate_votes
+				end
+			end
+		end
+
+		@new_record = false
+
+		return true
 	end
 
 end

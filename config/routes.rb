@@ -53,6 +53,7 @@ Rails.application.routes.draw do
 		
 		resources :voters do
 			collection do
+				post "import"
 				post "filter"
 				get "search"
 			end
