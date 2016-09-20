@@ -59,8 +59,27 @@ cs:
     notices:
       models:
         voter:
+          create: Volič byl úspěšně vytvořen
+          update: Volič byl úspěšně editovan
           destroy: Volič byl úspěšně smazán.
         parent:
           user_destroy: Uživatelský účet voliče byl úspěšně smazán.
-          user_create: Volič byl úspěšně vytvořen.    
+          user_create: Volič byl úspěšně vytvořen.
+        election:
+          create: Volba vytvořena
+          destroy: Volba smazána
+          update: Volba editovana
+        election_part:
+          create: Volba vytvořena
+          destroy: Volba smazána
+          update: Volba editovana
+        candidate:
+          create: Kandidát vytvořen
+          destroy: Kandidát smazán
+          update: Kandidát editovan
+        candidate_participation:
+          create: Volba vytvořena
+          destroy: Volba smazána
+          update: Volba editovana
+                       
      

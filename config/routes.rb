@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 	
 	resources :votings, only: [:new, :create] 
 	resources :results	
+	
 	#
 	# Admin
 	#

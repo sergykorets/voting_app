@@ -80,7 +80,6 @@ GEM
     gretel (3.0.8)
       rails (>= 3.2.0)
     i18n (0.7.0)
-    iconv (1.0.4)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -167,10 +166,6 @@ GEM
     ric_user (1.29.11)
       devise (~> 3.5)
       rails (~> 4.2)
-    roo (2.5.1)
-      nokogiri (~> 1)
-      rubyzip (~> 1.1, < 2.0.0)
-    rubyzip (1.2.0)
     rug (1.16.5)
       rails (~> 4.2)
       rug_record (= 1.16.5)
@@ -236,7 +231,6 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   font-awesome-sass (~> 4.6.2)
   gretel
-  iconv (~> 1.0.3)
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
@@ -252,7 +246,6 @@ DEPENDENCIES
   ric_devise (= 1.29.11)
   ric_notification (= 1.29.11)
   ric_user (= 1.29.11)
-  roo
   rug (= 1.16.5)!
   rug_builder (= 1.16.5)
   rug_controller (= 1.16.5)
