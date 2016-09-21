@@ -4,25 +4,60 @@ cs:
     homepage:
       index: Homepage
     admin:
-      voters:
-        index: Voliči
-        show: Volič
-        user_create: Vytvořit uživ. účet
-        user_regenerate_password: Přegenerovat heslo
-        user_destroy: Smazat uživ. účet
       dashboard:
         index: Dashboard
+      voters:
+        index: Voliči
+        show: Detail voliče
+        new: Nový volič
+        create: Nový volič
+        edit: Upravit voliče
+        update: Upravit voliče
+        destroy: Smazat voliče
+        generate_code: Genrovat kód
       elections:
         index: Volby
-        show: Volba
+        show: Detail voleb
+        new: Nové volby
+        create: Nové volby
+        edit: Upravit volby
+        update: Upravit volby
+        destroy: Smazat volby
+      election_parts:
+        show: Detail volební oblasti
+        new: Nová volební oblast
+        create: Nová volební oblast
+        edit: Upravit volební oblast
+        update: Upravit volební oblast
+        destroy: Smazat volební oblast
       candidates:
         index: Kandidáti
-        show: Kandidát
-      results: 
-        index: Výsledky
+        show: Detail kandidáta
+        new: Nový kandidát
+        create: Nový kandidát
+        edit: Upravit kandidáta
+        update: Upravit kandidáta
+        destroy: Smazat kandidáta
+      candidate_participations:
+        show: Detail kandidatury
+        new: Nová kandidatura
+        create: Nová kandidatura
+        edit: Upravit kandidaturu
+        update: Upravit kandidaturu
+        destroy: Smazat kandidaturu
 
   activerecord:
     attributes:
+      voter:
+        name: Jméno
+        name_lastname: Příjmení
+        name_firstname: Křestní jméno
+        email: E-mail
+        election_ids: Volby
+        elections: Volby
+        election_id_for_filter: Volby
+        code: Kód
+        code_generated_at: Kód vygenerován
       candidate:
         name: Jméno
         name_lastname: Příjmení
@@ -34,8 +69,8 @@ cs:
         photo_crop: Oříznutí fotografie
       candidate_participation:
         created_at: Vytvořeno
-        election_part: Volební téma
-        election_part_id: Volební téma
+        election_part: Volební oblast
+        election_part_id: Volební oblast
         votes: Počet hlasů
         candidate: Kandidát
         candidate_id: Kandidát
@@ -55,31 +90,46 @@ cs:
         max_votes_for_candidate: Maximální počet hlasů na voliče
       ric_notification/notification_template:
         key_values:
-          welcome_voter: Uvítání nového voliče
+          voter_welcome: Uvítání nového voliče
+          voter_new_code: Nový kód voliče
     notices:
       models:
         voter:
-          create: Volič byl úspěšně vytvořen
-          update: Volič byl úspěšně editovan
+          create: Volič byl úspěšně vytvořen.
+          update: Volič byl úspěšně upraven.
           destroy: Volič byl úspěšně smazán.
-        parent:
-          user_destroy: Uživatelský účet voliče byl úspěšně smazán.
-          user_create: Volič byl úspěšně vytvořen.
+          generate_code: Kód voliče byl úspěšně vygenerován.
         election:
-          create: Volba vytvořena
-          destroy: Volba smazána
-          update: Volba editovana
+          create: Volby byly úspěšně vytvořeny.
+          update: Volby byly úspěšně upraveny.
+          destroy: Volby byly úspěšně smazány.
         election_part:
-          create: Volba vytvořena
-          destroy: Volba smazána
-          update: Volba editovana
+          create: Volby byly úspěšně vytvořeny.
+          update: Volby byly úspěšně upraveny.
+          destroy: Volby byly úspěšně smazány.
         candidate:
-          create: Kandidát vytvořen
-          destroy: Kandidát smazán
-          update: Kandidát editovan
+          create: Kandidát byl úspěšně vytvořen.
+          update: Kandidát byl úspěšně upraven.
+          destroy: Kandidát byl úspěšně smazán.
         candidate_participation:
-          create: Volba vytvořena
-          destroy: Volba smazána
-          update: Volba editovana
+          create: Kandidatura byla úspěšně vytvořena.
+          update: Kandidatura byla úspěšně upravena.
+          destroy: Kandidatura byla úspěšně smazána.
+    errors:
+      models:
+        voter:
+          not_found: Volič nebyl nalezen.
+          generate_code: Nepodařilo se vygenerovat kód voliče.
+        election:
+          not_found: Volby nebyly nalezeny.
+        election_part:
+          not_found: Volby nebyly nalezeny.
+        candidate:
+          not_found: Kandidát nebyl nalezen.
+        candidate_participation:
+          not_found: Kandidatura nebyla nalezena.
                        
-     
+  pundit:
+    admin_policy:
+      show?: "K této obrazovce nemáte oprávnění."
+

@@ -15,7 +15,7 @@ class Voter < ActiveRecord::Base
 	# Structure
 	# *************************************************************************
 	
-	has_one :user, class_name: RicUser.user_model.to_s, as: :person
+	#has_one :user, class_name: RicUser.user_model.to_s, as: :person
 	has_many :votes, dependent: :destroy
 	has_and_belongs_to_many :elections
 
@@ -25,6 +25,17 @@ class Voter < ActiveRecord::Base
 
 	name_column :name, title: false
 	add_methods_to_json :name_formatted
+
+	#
+	# Get name of email in case name is not set
+	#
+	def name_or_email
+		if self.name.nil?
+			return self.email
+		else
+			self.name_formatted
+		end
+	end
 	
 	# *************************************************************************
 	# Scopes
@@ -69,16 +80,32 @@ class Voter < ActiveRecord::Base
 		end
 	end
 
-	def create_user
-		user = self.build_user(email: self.email, role: "voter")
-		new_password = user.regenerate_password(disable_email: true)
-		if new_password
-			RicNotification.notify([:welcome_voter, self, new_password], user)
-			return user
+	# *************************************************************************
+	# Code
+	# *************************************************************************
+
+	def generate_code
+		self.code = "test"
+		if self.code_generated_at.nil?
+			RicNotification.notify([:voter_welcome, self, self.code], self)
 		else
-			return nil
+			RicNotification.notify([:voter_new_code, self, self.code], self)
 		end
+		self.code_generated_at = Time.current
+		self.save
+		return true
 	end
+
+#	def create_user
+#		user = self.build_user(email: self.email, role: "voter")
+#		new_password = user.regenerate_password(disable_email: true)
+#		if new_password
+#			RicNotification.notify([:welcome_voter, self, new_password], user)
+#			return user
+#		else
+#			return nil
+#		end
+#	end
 	
 	# *************************************************************************
 	# Columns
@@ -92,32 +119,14 @@ class Voter < ActiveRecord::Base
 		]
 	end
 
+	# *************************************************************************
+	# Import
+	# *************************************************************************
+
 	def self.import(file)
 		CSV.foreach(file.path, headers: true) do |row|
-			Voter.create! row.to_hash
+			Voter.create!(row.to_hash)
 		end
-	end
-
-	def save
-		ActiveRecord::Base.transaction do 
-			
-			# Create vote instance for each step
-			self.steps.each do |step|
-				election_part = @election_parts[step]
-				if election_part
-					vote = Vote.find_or_create_by(
-						election_part_id: election_part.id,
-						voter_id: @voter.id
-					)
-					vote.candidate_ids = @candidate_ids[step]
-					election_part.recalculate_votes
-				end
-			end
-		end
-
-		@new_record = false
-
-		return true
 	end
 
 end

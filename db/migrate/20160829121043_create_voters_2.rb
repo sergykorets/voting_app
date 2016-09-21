@@ -2,14 +2,17 @@
 # * Copyright (c) Clockstar s.r.o. All rights reserved.
 # *****************************************************************************
 # *
-# * Abstract engine controller
+# * Create vote migration
 # *
-# * Author: Matěj Outlý
-# * Date  : 26. 6. 2015
+# * Author: 
+# * Date  : 10. 8. 2016
 # *
 # *****************************************************************************
 
-module RicDevise
-	class ApplicationController < ::ApplicationController
+class CreateVoters2 < ActiveRecord::Migration
+	def change
+		remove_reference :voters, :election
+		rename_column :voters, :name, :name_lastname
+		add_column :voters, :name_firstname, :string
 	end
 end

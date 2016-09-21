@@ -11,7 +11,7 @@
 
 class Admin::VotersController < AdminController
 
-	before_action :set_voter, only: [:show, :edit, :update, :destroy, :user_create, :user_regenerate_password, :user_destroy]
+	before_action :set_voter, only: [:show, :edit, :update, :destroy, :generate_code]
 
 	#
 	# Index action
@@ -114,46 +114,22 @@ class Admin::VotersController < AdminController
 	end
 
 	#
-	# Create user action
+	# Generate code action
 	#
-	def user_create
-		if @voter.create_user
-			redirect_to admin_voter_path(@voter), notice: I18n.t("activerecord.notices.models.parent.user_create")
+	def generate_code
+		if @voter.generate_code
+			redirect_to main_app.admin_voter_path(@voter), notice: I18n.t("activerecord.notices.models.voter.generate_code")
 		else
-			redirect_to admin_voter_path(@voter), alert: I18n.t("activerecord.errors.models.parent.user_create")
+			redirect_to main_app.admin_voter_path(@voter), alert: I18n.t("activerecord.errors.models.voter.generate_code")
 		end
 	end
 
 	#
-	# Regenerate password action
+	# Import action
 	#
-	def user_regenerate_password
-		if !@voter.user
-			redirect_to admin_voter_path(@voter), alert: I18n.t("activerecord.errors.models.parent.user_not_found")
-			return
-		end
-		if @voter.user.regenerate_password
-			redirect_to admin_voter_path(@voter), notice: I18n.t("activerecord.notices.models.parent.user_regenerate_password")
-		else
-			redirect_to admin_voter_path(@voter), alert: I18n.t("activerecord.errors.models.parent.user_regenerate_password")
-		end
-	end
-
-	#
-	# User destroy action
-	#
-	def user_destroy
-		if !@voter.user
-			redirect_to admin_voter_path(@voter), alert: I18n.t("activerecord.errors.models.parent.user_not_found")
-			return
-		end
-		@voter.user.destroy
-		redirect_to admin_voter_path(@voter), notice: I18n.t("activerecord.notices.models.parent.user_destroy")
-	end
-
 	def import
 		Voter.import(params[:file])
-		redirect_to admin_voters_url, notice: "Voters imported"
+		redirect_to main_app.admin_voters_url, notice: "Voters imported"
 	end
 
 protected

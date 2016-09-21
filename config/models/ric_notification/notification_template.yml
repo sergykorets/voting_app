@@ -1,2 +1,4 @@
 keys:
- - welcome_voter
+  - user_new_password
+  - voter_welcome
+  - voter_new_code

@@ -10,11 +10,6 @@
 # *****************************************************************************
 
 class Admin::DashboardController < AdminController
-
-	#
-	# Authenticate before every action
-	#
-	before_action :authenticate_user!
 	
 	def index
 	end

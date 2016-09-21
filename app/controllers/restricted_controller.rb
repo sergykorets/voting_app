@@ -25,8 +25,8 @@ protected
 	def set_voter
 		@voter = current_user.voter
 		if @voter.nil?
-			#redirect_to ric_devise.new_user_session_path
-			@voter = Voter.last
+			redirect_to ric_devise.new_user_session_path
+			#@voter = Voter.last
 		end
 	end
 	

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160912153001) do
+ActiveRecord::Schema.define(version: 20160921135420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,9 @@ ActiveRecord::Schema.define(version: 20160912153001) do
     t.integer "vote_id"
   end
 
+  add_index "candidates_votes", ["candidate_id"], name: "index_candidates_votes_on_candidate_id", using: :btree
+  add_index "candidates_votes", ["vote_id"], name: "index_candidates_votes_on_vote_id", using: :btree
+
   create_table "election_parts", force: :cascade do |t|
     t.integer  "election_id"
     t.string   "name"
@@ -80,15 +83,22 @@ ActiveRecord::Schema.define(version: 20160912153001) do
     t.integer "voter_id"
   end
 
+  add_index "elections_voters", ["election_id"], name: "index_elections_voters_on_election_id", using: :btree
+  add_index "elections_voters", ["voter_id"], name: "index_elections_voters_on_voter_id", using: :btree
+
   create_table "notification_receivers", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "sent_at"
     t.datetime "received_at"
     t.integer  "notification_id"
-    t.integer  "user_id"
     t.string   "state"
+    t.string   "error_message"
+    t.integer  "receiver_id"
+    t.string   "receiver_type"
   end
+
+  add_index "notification_receivers", ["notification_id"], name: "index_notification_receivers_on_notification_id", using: :btree
 
   create_table "notification_templates", force: :cascade do |t|
     t.datetime "created_at"
@@ -107,7 +117,11 @@ ActiveRecord::Schema.define(version: 20160912153001) do
     t.text     "message"
     t.string   "url"
     t.integer  "author_id"
+    t.integer  "receivers_count"
+    t.integer  "sent_count"
   end
+
+  add_index "notifications", ["author_id"], name: "index_notifications_on_author_id", using: :btree
 
   create_table "queue_classic_jobs", id: :bigserial, force: :cascade do |t|
     t.text     "q_name",                         null: false
@@ -144,28 +158,27 @@ ActiveRecord::Schema.define(version: 20160912153001) do
     t.string   "login"
   end
 
+  add_index "users", ["person_id"], name: "index_users_on_person_id", using: :btree
+  add_index "users", ["person_type"], name: "index_users_on_person_type", using: :btree
+
   create_table "voters", force: :cascade do |t|
-    t.string "name_firstname"
-    t.string "name_lastname"
-    t.string "email"
+    t.string   "name_lastname"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name_firstname"
+    t.string   "code"
+    t.datetime "code_generated_at"
   end
 
   create_table "votes", force: :cascade do |t|
     t.integer  "voter_id"
-    t.integer  "candidate_id"
     t.integer  "election_part_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "votes", ["candidate_id"], name: "index_votes_on_candidate_id", using: :btree
   add_index "votes", ["election_part_id"], name: "index_votes_on_election_part_id", using: :btree
   add_index "votes", ["voter_id"], name: "index_votes_on_voter_id", using: :btree
 
-  add_foreign_key "candidate_participations", "candidates"
-  add_foreign_key "candidate_participations", "election_parts"
-  add_foreign_key "election_parts", "elections"
-  add_foreign_key "votes", "candidates"
-  add_foreign_key "votes", "election_parts"
-  add_foreign_key "votes", "voters"
 end

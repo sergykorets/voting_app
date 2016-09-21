@@ -11,9 +11,10 @@
 
 Rails.application.routes.draw do
 
-	# Root
+	#
+	# Public
+	#
 	root "homepage#index"
-	
 	resources :votings, only: [:new, :create] 
 	resources :results	
 	
@@ -59,9 +60,7 @@ Rails.application.routes.draw do
 				get "search"
 			end
 			member do
-				put "user_create"
-				put "user_regenerate_password"
-				delete "user_destroy"
+				put "generate_code"
 			end
 		end	
 				
@@ -70,17 +69,17 @@ Rails.application.routes.draw do
 	#
 	# RIC Devise
 	#
-	mount RicDevise::Engine => "/devise"
+	mount RicDevise::Engine => "/auth"
 
 	#
 	# RIC Admin
 	#
-	mount RicAdmin::Engine => "/admin/clockstar"
+	mount RicAdmin::Engine => "/admin"
 
 	#
-	# RicAccount
+	# RicAuth
 	#
-	mount RicAccount::Engine => "/admin"
+	mount RicAuth::AdminEngine => "/admin", as: :ric_auth_admin
 
 	#
 	# RicUser
