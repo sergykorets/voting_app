@@ -1,23 +1,23 @@
-<div class="panel panel-default">
-	<div class="panel-body">
-		<div class="row">    
-			<div class="col-md-3 text-center">
-				<%= image_tag candidate_participation.candidate.photo.url(:thumb), class: "img-circle" %>
-			</div>
-			<div class="col-md-6">
-				<h2 class="featurette-heading"><%= candidate_participation.candidate.name_formatted %>
-					<small class="text-muted"><%= candidate_participation.candidate.address %></small>
-				</h2>
-				<p>Rok narození: <%= candidate_participation.candidate.birth_year %></p>
-			</div>	
-			<div class="col-md-3 text-center">
-				</br></br></br>
-				<% if !@voting.confirm_step? %>
-					<% @checked = (!@voting.candidate_ids[@voting.current_step].nil? && @voting.candidate_ids[@voting.current_step].include?(candidate_participation.candidate_id)) %>
-					<%= check_box_tag("candidate_ids[]", candidate_participation.candidate_id, @checked, :style => "width: 60px; height: 60px;") %>
-				<% end %>
+<div class="panel-checkbox">
+	<label>
+		<% if !@voting.confirm_step? %>
+			<% checked = (!@voting.candidate_ids[@voting.current_step].nil? && @voting.candidate_ids[@voting.current_step].include?(candidate_participation.candidate_id)) %>
+			<%= check_box_tag("voting[candidate_ids][]", candidate_participation.candidate_id, checked) %>
+		<% end %>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="row">    
+					<div class="col-md-3 text-center">
+						<%= image_tag(candidate_participation.candidate.photo.url(:thumb), class: "img-circle", height: "80", width: "80") %>
+					</div>
+					<div class="col-md-9">
+						<h4 class="featurette-heading"><%= candidate_participation.candidate.name_formatted %>
+							<small class="text-muted"><%= candidate_participation.candidate.address %></small>
+						</h4>
+						<p>Rok narození: <%= candidate_participation.candidate.birth_year %></p>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
+	</label>
 </div>
-	

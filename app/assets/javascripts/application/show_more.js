@@ -8,10 +8,12 @@ $(document).ready(function() {
 
 		var shown = $content.hasClass("show-content");
 		if (shown) {
-			linkText = "Méně";
+			$this.parent().find("button.shown-with-content").show();
+			$this.parent().find("button.shown-without-content").hide();
 		} else {
-			linkText = "Více";
+			$this.parent().find("button.shown-with-content").hide();
+			$this.parent().find("button.shown-without-content").show();
 		}
-		$this.text(linkText);
 	});
+	$(".show-more button.shown-with-content").hide();
 });

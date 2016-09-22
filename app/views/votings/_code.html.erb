@@ -1,0 +1,5 @@
+<h3>Vyplňte Váš unikátní kód</h3>
+<div class="form-group <%= (@voting.errors[:code].size > 0 ? "has-error" : "") %>">
+	<%= f.text_field :code, class: "form-control input-lg" %>
+	<%= f.errors(:code) %>
+</div>

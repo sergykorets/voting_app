@@ -1,3 +1,12 @@
+<h3>
+	Vyberte Vámi zvolené kandidáty
+	<span class="label label-default">zbývá <span class="remaining-votes" data-max-votes="<%= election_part.max_votes_for_candidate %>"><%= election_part.max_votes_for_candidate %></span></span>
+</h3>
+<%= f.errors(:candidate_ids, format: :alert) %>
+<div class="row remaining-votes-container">
 <% election_part.candidate_participations.order(position: :asc).each do |candidate_participation| %>
-	<%= render partial: "candidate_participation", locals: { candidate_participation: candidate_participation } %>
+	<div class="col-md-6">
+		<%= render partial: "candidate_participation", locals: { candidate_participation: candidate_participation } %>
+	</div>
 <% end %>	
+</div>

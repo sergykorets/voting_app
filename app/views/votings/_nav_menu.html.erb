@@ -1,0 +1,17 @@
+<div class="row">
+	<% steps_count = @voting.steps.length %>
+	<% @voting.steps.each_with_index do |step, index| %>
+		<div class="col-md-<%= 12 / steps_count %>">
+			<div class="panel panel-default <%= (step == @voting.current_step ? "active" : "") %>">
+				<div class="panel-body text-center">
+					<%= (index + 1) %>.&nbsp;
+					<% if step == "confirm" %>
+						Potvrzení
+					<% else %>
+						<%= @voting.election_parts[step].name %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>

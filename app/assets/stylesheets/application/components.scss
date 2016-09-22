@@ -43,7 +43,47 @@ body {
 	.hide-md { display: none; }
 }
 
-.election_part {
-	background: #e6e6e6;
+/*****************************************************************************/
+/* Panels                                                                    */
+/*****************************************************************************/
+
+.panel {
+	&.active {
+		background: #e6e6e6;
+	}
+	&.voted {
+		background-color: #dff0d8;
+		border-color: #d6e9c6;
+	}
 }
 
+.panel-checkbox {
+
+	label {
+		display: block;
+		margin: 0;
+		input[type=checkbox] {
+			display: none;
+			
+			& + .panel {
+				cursor: pointer;
+			}
+			
+			&:checked + .panel {
+				background-color: #dff0d8;
+				border-color: #d6e9c6;
+			}
+		}
+	}
+
+}
+
+/*****************************************************************************/
+/* Votes                                                                     */
+/*****************************************************************************/
+
+.result-votes {
+	font-size: 36px;
+	font-weight: bold;
+	margin: 13px 20px;
+}

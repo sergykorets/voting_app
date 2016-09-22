@@ -115,6 +115,8 @@ cs:
           create: Kandidatura byla úspěšně vytvořena.
           update: Kandidatura byla úspěšně upravena.
           destroy: Kandidatura byla úspěšně smazána.
+        voting:
+          create: Vaše volba byla úspěšně uložena. Děkujeme! Po skončení se na této stránce zobrazí kompletní výsledky.
     errors:
       models:
         voter:
@@ -122,12 +124,22 @@ cs:
           generate_code: Nepodařilo se vygenerovat kód voliče.
         election:
           not_found: Volby nebyly nalezeny.
+          not_votable: Volby jsou uzavřeny, dnes nelze hlasovat.
         election_part:
           not_found: Volby nebyly nalezeny.
         candidate:
           not_found: Kandidát nebyl nalezen.
         candidate_participation:
           not_found: Kandidatura nebyla nalezena.
+        voting:
+          attributes:
+            candidate_ids: 
+              too_big: Můžete vybrat maximálně %{max_votes_for_candidate} kandidátů.
+            code:
+              blank: Vypňte prosím Váš unikátní kód, který jsme Vám zaslali na e-mail.
+            voter:
+              blank: Vypňený kód není platný. Ujistěte se prosím, zda jste ho opsali správně, případně kontaktujte technickou podporu.
+              already_voted: Vyplněný kód již byl použit pro hlasování a nelze ho použít znovu.
                        
   pundit:
     admin_policy:

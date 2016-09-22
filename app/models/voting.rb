@@ -12,50 +12,86 @@
 class Voting
 	include ActiveModel::Model
 
-	def initialize(election, voter)
-		@election = election
-		@voter = voter
-		@new_record = true
-		@candidate_ids = {} # step as a key
-	end
+	# *************************************************************************
+	# Lifecycle
+	# *************************************************************************
 
-	def valid?
-		return true
+	def initialize(election)
+		@election = election
+		@new_record = true
+		@candidate_ids = {} # Step as a key
 	end
 
 	def new_record?
 		return @new_record
 	end
 
+	def valid?
+		if self.confirm_step?
+			if self.code.blank?
+				self.errors.add(:code, I18n.t("activerecord.errors.models.voting.attributes.code.blank"))
+			end
+			if self.voter.blank?
+				self.errors.add(:code, I18n.t("activerecord.errors.models.voting.attributes.voter.blank"))
+			end
+			if self.voter && self.voter.already_voted?(@election)
+				self.errors.add(:code, I18n.t("activerecord.errors.models.voting.attributes.voter.already_voted"))
+			end
+		else
+			if self.candidate_ids[self.current_step].length > current_election_part.max_votes_for_candidate
+				self.errors.add(:candidate_ids, I18n.t("activerecord.errors.models.voting.attributes.candidate_ids.too_big", max_votes_for_candidate: current_election_part.max_votes_for_candidate))
+			end
+		end
+		return self.errors.empty?
+	end
+
 	def save
 		ActiveRecord::Base.transaction do 
-			
-			# Create vote instance for each step
-			self.steps.each do |step|
+			self.steps.each do |step| # Create vote instance for each step
 				election_part = @election_parts[step]
 				if election_part
 					vote = Vote.find_or_create_by(
 						election_part_id: election_part.id,
-						voter_id: @voter.id
+						voter_id: self.voter.id
 					)
 					vote.candidate_ids = @candidate_ids[step]
-					election_part.recalculate_votes
 				end
 			end
+			@election.recalculate_votes
 		end
-
 		@new_record = false
-
 		return true
 	end
 
-	def election_part
-		self.steps
-		return @election_parts[self.current_step]
-	end
+
+	# *************************************************************************
+	# Attributes
+	# *************************************************************************
+
+	attr_accessor :code
 
 	def candidate_ids
 		@candidate_ids
+	end
+
+	def voter
+		if @voter.nil?
+			@voter = Voter.where(code: self.code).first if !self.code.nil?
+			if @voter && !@voter.can_vote?(@election)
+				@voter = nil
+			end
+		end
+		return @voter
+	end
+
+	def election_parts
+		self.steps
+		return @election_parts
+	end
+
+	def current_election_part
+		self.steps
+		return @election_parts[self.current_step]
 	end
 
 	# *************************************************************************
@@ -71,14 +107,19 @@ class Voting
 				@steps << step
 				@election_parts[step] = election_part
 			end
+			@steps << "confirm"
 		end
-		@steps << "confirmation"
 		return @steps
-
 	end
 
-	attr_writer :current_step
-
+	def current_step=(current_step)
+		if self.steps.include?(current_step)
+			@current_step = current_step
+		else
+			@current_step = nil
+		end
+	end
+	
 	def current_step
 		@current_step || steps.first
 	end
@@ -100,7 +141,7 @@ class Voting
 	end
 
 	def confirm_step?
-		return current_step == "confirmation"
+		return current_step == "confirm"
 	end
 
 	def all_valid?

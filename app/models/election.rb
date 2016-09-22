@@ -75,4 +75,30 @@ class Election < ActiveRecord::Base
 		return Election.first
 	end
 
+	# *************************************************************************
+	# Votability
+	# *************************************************************************
+
+	def votable?
+		today = Date.today
+		result_1 = self.votable_from.nil? || self.votable_from <= today
+		result_2 = self.votable_to.nil? || self.votable_to >= today
+		return result_1 && result_2
+	end
+
+	def resultable?
+		today = Date.today
+		return !self.votable_to.nil? && self.votable_to < today
+	end
+
+	# *************************************************************************
+	# Votes
+	# *************************************************************************
+
+	def recalculate_votes
+		self.election_parts.each do |election_part|
+			election_part.recalculate_votes
+		end
+	end
+
 end

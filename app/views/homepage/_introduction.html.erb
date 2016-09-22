@@ -1,0 +1,20 @@
+<div class="panel panel-default text-center"><div class="panel-body">
+	<% if @election.votable? %>
+		<%= link_to "Začít hlasovat", main_app.new_voting_path(clear: 1), class: "btn btn-lg btn-primary" %>
+	<% else %>
+		<button type="button" class="btn btn-lg btn-primary" disabled="disabled">Začít hlasovat</button>
+		<br/><br/>
+		<p>Hlasování bude možné od <%= l(@election.votable_from) %> do <%= l(@election.votable_to) %>.</p>
+	<% end %>
+</div></div>
+
+<% tabs = rug_tabs %>
+<% tabs.tab "election_content", Election.human_attribute_name("content") do %>
+	<%= @election.content.html_safe if @election.content %>
+<% end %>
+<% @election.election_parts.order(id: :asc).each do |election_part| %>
+	<% tabs.tab "election_part_#{election_part.id}", election_part.name do %>
+		<%= render partial: "election_part", locals: { election_part: election_part } %>
+	<% end %>
+<% end %>
+<%= tabs.render %>

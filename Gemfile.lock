@@ -1,35 +1,3 @@
-PATH
-  remote: /Users/mat/Projects/ruby-on-rails/ric/ric_admin
-  specs:
-    ric_admin (1.33.0.dev)
-      gretel (~> 3.0)
-
-PATH
-  remote: /Users/mat/Projects/ruby-on-rails/ric/ric_auth
-  specs:
-    ric_auth (1.33.0.dev)
-      rails (~> 4.2)
-
-PATH
-  remote: /Users/mat/Projects/ruby-on-rails/ric/ric_devise
-  specs:
-    ric_devise (1.33.0.dev)
-      devise (~> 3.5)
-      rails (~> 4.2)
-
-PATH
-  remote: /Users/mat/Projects/ruby-on-rails/ric/ric_notification
-  specs:
-    ric_notification (1.33.0.dev)
-      rails (~> 4.2)
-
-PATH
-  remote: /Users/mat/Projects/ruby-on-rails/ric/ric_user
-  specs:
-    ric_user (1.33.0.dev)
-      devise (~> 3.5)
-      rails (~> 4.2)
-
 GEM
   remote: https://rubygems.org/
   remote: http://gems.clockstar.cz/
@@ -188,20 +156,32 @@ GEM
     ref (2.0.0)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
-    rug (1.17.0)
+    ric_admin (1.33.1)
+      gretel (~> 3.0)
+    ric_auth (1.33.1)
       rails (~> 4.2)
-      rug_record (= 1.17.0)
-      rug_support (= 1.17.0)
-    rug_builder (1.17.0)
+    ric_devise (1.33.1)
+      devise (~> 3.5)
+      rails (~> 4.2)
+    ric_notification (1.33.1)
+      rails (~> 4.2)
+    ric_user (1.33.1)
+      devise (~> 3.5)
+      rails (~> 4.2)
+    rug (1.17.1)
+      rails (~> 4.2)
+      rug_record (= 1.17.1)
+      rug_support (= 1.17.1)
+    rug_builder (1.17.1)
       actionview (~> 4.2)
-      rug_support (= 1.17.0)
-    rug_controller (1.17.0)
+      rug_support (= 1.17.1)
+    rug_controller (1.17.1)
       actionpack (~> 4.2)
-      rug_support (= 1.17.0)
-    rug_record (1.17.0)
+      rug_support (= 1.17.1)
+    rug_record (1.17.1)
       activerecord (~> 4.2)
-      rug_support (= 1.17.0)
-    rug_support (1.17.0)
+      rug_support (= 1.17.1)
+    rug_support (1.17.1)
       activesupport (~> 4.2)
       truncate_html (~> 0.9)
     sass (3.4.22)
@@ -260,16 +240,16 @@ DEPENDENCIES
   queue_classic
   quiet_assets
   rails (= 4.2.6)
-  ric_admin!
-  ric_auth!
-  ric_devise!
-  ric_notification!
-  ric_user!
-  rug (= 1.17.0)
-  rug_builder (= 1.17.0)
-  rug_controller (= 1.17.0)
-  rug_record (= 1.17.0)
-  rug_support (= 1.17.0)
+  ric_admin (= 1.33.1)
+  ric_auth (= 1.33.1)
+  ric_devise (= 1.33.1)
+  ric_notification (= 1.33.1)
+  ric_user (= 1.33.1)
+  rug (= 1.17.1)
+  rug_builder (= 1.17.1)
+  rug_controller (= 1.17.1)
+  rug_record (= 1.17.1)
+  rug_support (= 1.17.1)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring

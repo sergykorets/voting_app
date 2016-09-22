@@ -47,18 +47,14 @@ class CandidateParticipation < ActiveRecord::Base
 		]
 	end
 
-
 	# *************************************************************************
 	# Votes
 	# *************************************************************************
 
 	def recalculate_votes
-
 		result = ActiveRecord::Base.connection.execute("SELECT COUNT(*) FROM candidates_votes LEFT JOIN votes ON votes.id = candidates_votes.vote_id WHERE candidates_votes.candidate_id = #{self.candidate_id} AND votes.election_part_id = #{self.election_part_id}")
-		puts result.getvalue(0,0)
-		self.votes = result.getvalue(0,0)
+		self.votes = result.getvalue(0, 0)
 		self.save
-		
 	end
 
 end

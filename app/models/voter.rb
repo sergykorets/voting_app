@@ -15,7 +15,6 @@ class Voter < ActiveRecord::Base
 	# Structure
 	# *************************************************************************
 	
-	#has_one :user, class_name: RicUser.user_model.to_s, as: :person
 	has_many :votes, dependent: :destroy
 	has_and_belongs_to_many :elections
 
@@ -85,7 +84,11 @@ class Voter < ActiveRecord::Base
 	# *************************************************************************
 
 	def generate_code
-		self.code = "test"
+		new_code = RugSupport::Util::String.random(6)
+		while self.class.where("code = :value", value: new_code).count > 0
+			new_code = RugSupport::Util::String.random(6)
+		end
+		self.code = new_code
 		if self.code_generated_at.nil?
 			RicNotification.notify([:voter_welcome, self, self.code], self)
 		else
@@ -96,17 +99,14 @@ class Voter < ActiveRecord::Base
 		return true
 	end
 
-#	def create_user
-#		user = self.build_user(email: self.email, role: "voter")
-#		new_password = user.regenerate_password(disable_email: true)
-#		if new_password
-#			RicNotification.notify([:welcome_voter, self, new_password], user)
-#			return user
-#		else
-#			return nil
-#		end
-#	end
-	
+	def self.generate_missing_codes(election)
+		Voter.all.each do |voter|
+			if voter.code_generated_at.nil? && voter.can_vote?(election)
+				voter.generate_code
+			end
+		end
+	end
+
 	# *************************************************************************
 	# Columns
 	# *************************************************************************
@@ -127,6 +127,25 @@ class Voter < ActiveRecord::Base
 		CSV.foreach(file.path, headers: true) do |row|
 			Voter.create!(row.to_hash)
 		end
+	end
+
+	# *************************************************************************
+	# Voting
+	# *************************************************************************
+
+	def already_voted?(election)
+		return self.votes.where(election_part_id: election.election_part_ids).count > 0
+	end
+
+	def can_vote?(election)
+		election_found = false
+		self.elections.each do |voter_election| 
+			if voter_election.id == election.id
+				election_found = true
+				break
+			end
+		end
+		return election_found
 	end
 
 end

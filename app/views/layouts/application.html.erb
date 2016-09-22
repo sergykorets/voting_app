@@ -9,7 +9,6 @@
 </head>
 <body>
 	<div class="container">
-		<%= render partial: "layouts/application/flash" %>
 		<% if @election %>
 			<div class="row">    
 				<div class="col-md-10">
@@ -21,22 +20,15 @@
 					</div>
 				</div>
 				<div class="col-md-2 text-right hide-md">
-					<%= image_tag(image_url("logo.png")) %>
+					<%= link_to image_tag(image_url("logo.png")), main_app.root_path %>
 				</div>
-				<% if params[:controller] == "votings" %>
-					<div class="col-md-10 text-right">
-						<strong><%= @voter.email %></strong> <%= rug_button "Sign out", ric_devise.destroy_user_session_path, method: "delete" %>
-					</div>
-				<% end %>
 			</div>
-			<% if params[:controller] == "votings" %>
-				<hr>
-			<% end %>
+			<%= render partial: "layouts/application/flash" %>
 			<%= yield %>
 		<% else %>
+			<%= render partial: "layouts/application/flash" %>
 			<%= yield %>
 		<% end %>
-
 	</div>	
 </body>
 </html>

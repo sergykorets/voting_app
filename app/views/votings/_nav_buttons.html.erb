@@ -1,0 +1,17 @@
+<!--<div class="panel panel-default"><div class="panel-body">-->
+	<hr/>
+	<div class="row">
+		<div class="col-md-6">
+			<% if !@voting.first_step? %>
+				<%= f.submit "Předchozí krok", :name => "back_button", class: "btn btn-lg btn-link" %>
+			<% end %>
+		</div>
+		<div class="col-md-6 text-right">
+			<% if @voting.last_step? %>
+				<%= f.submit "Potvrdit a odeslat mou volbu", class: "btn btn-lg btn-primary" %>
+			<% else %>
+				<%= f.submit "Následující krok", class: "btn btn-lg btn-primary" %>
+			<% end %>
+		</div>
+	</div>
+<!--</div></div>-->

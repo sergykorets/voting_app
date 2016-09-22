@@ -1,0 +1,15 @@
+<% @election.election_parts.order(id: :asc).each do |election_part| %>
+	<h3>Vámi zvolení kandidáti - <%= election_part.name %></h3>
+	<% if @voting.candidate_ids["election_part_#{election_part.id}"] %>
+		<div class="row">
+			<% @voting.candidate_ids["election_part_#{election_part.id}"].each do |candidate_id| %>
+				<% candidate_participation = CandidateParticipation.where(election_part_id: election_part.id, candidate_id: candidate_id).first %>
+				<% if !candidate_participation.nil? %>
+					<div class="col-md-6">
+					<%= render partial: "candidate_participation", locals: { candidate_participation: candidate_participation } %>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+	<% end %>
+<% end %>
