@@ -6,3 +6,6 @@ set :deploy_to, "/var/data/staging/anuba-design/czepa.cz.hlasovani"
 
 # Use "staging" environment
 set :rails_env, "staging"
+
+# Eye
+set :eye_config, "./worker_staging.eye"

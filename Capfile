@@ -12,6 +12,9 @@ require "capistrano/rails/migrations"
 # Include Passenger specific tasks
 require "capistrano/passenger"
 
+# Include Eye specific tasks
+require "capistrano/eye"
+
 # Include Rug specific tasks
 require "capistrano/rug"
 

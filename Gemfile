@@ -93,6 +93,11 @@ gem "ric_notification", "1.33.1"
 
 group :development, :test do
 	
+	# Capistrano
+	gem "capistrano-rails"
+	gem "capistrano-passenger"
+	gem "capistrano-eye"
+	
 	# Development server
 	gem "thin"
 
