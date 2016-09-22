@@ -67,12 +67,13 @@ Rails.application.configure do
 	# Mailer setting
 	config.action_mailer.delivery_method = :smtp
 	config.action_mailer.smtp_settings = {
-		:authentication => :plain,
-		:address => "smtp.mailgun.org",
+		:address => "smtp.gmail.com",
 		:port => 587,
-		:domain => "clockapp.cz",
-		:user_name => "no-reply@clockapp.cz",
-		:password => "l9Xy4B7y",
+		:domain => "czepa.cz",
+		:user_name => "czepa@czepa.cz",
+		:password => "paraplegik",
+		:authentication => :plain,
+		:enable_starttls_auto => true,
 	}
 	config.action_mailer.default_url_options = { :host => 'www.czepavolby.cz' }
 
