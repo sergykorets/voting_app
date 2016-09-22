@@ -116,7 +116,7 @@ cs:
           update: Kandidatura byla úspěšně upravena.
           destroy: Kandidatura byla úspěšně smazána.
         voting:
-          create: Vaše volba byla úspěšně uložena. Děkujeme! Po skončení se na této stránce zobrazí kompletní výsledky.
+          create: Vaše volba byla úspěšně odeslána a uložena. Děkujeme! Výsledky voleb se zobrazí na této stránce v pondělí 3. října 2016.
     errors:
       models:
         voter:
