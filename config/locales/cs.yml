@@ -138,7 +138,7 @@ cs:
             code:
               blank: Vypňte prosím Váš unikátní kód, který jsme Vám zaslali na e-mail.
             voter:
-              blank: Vypňený kód není platný. Ujistěte se prosím, zda jste ho opsali správně, případně kontaktujte technickou podporu.
+              blank: Vypňený kód není platný. Ujistěte se prosím, zda jste ho opsali správně.
               already_voted: Vyplněný kód již byl použit pro hlasování a nelze ho použít znovu.
                        
   pundit:
