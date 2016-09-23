@@ -89,10 +89,12 @@ class Voter < ActiveRecord::Base
 			new_code = RugSupport::Util::String.random(6)
 		end
 		self.code = new_code
-		if self.code_generated_at.nil?
-			RicNotification.notify([:voter_welcome, self, self.code], self)
-		else
-			RicNotification.notify([:voter_new_code, self, self.code], self)
+		if !self.email.blank?
+			if self.code_generated_at.nil?
+				RicNotification.notify([:voter_welcome, self, self.code], self)
+			else
+				RicNotification.notify([:voter_new_code, self, self.code], self)
+			end
 		end
 		self.code_generated_at = Time.current
 		self.save
@@ -102,7 +104,7 @@ class Voter < ActiveRecord::Base
 	def self.generate_missing_codes(election)
 		Voter.transaction do 
 			Voter.all.each do |voter|
-				if voter.code_generated_at.nil? && voter.can_vote?(election) && !voter.email.blank?
+				if voter.code_generated_at.nil? && voter.can_vote?(election)
 					voter.generate_code
 				end
 			end
