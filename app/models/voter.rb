@@ -100,9 +100,19 @@ class Voter < ActiveRecord::Base
 	end
 
 	def self.generate_missing_codes(election)
-		Voter.all.each do |voter|
-			if voter.code_generated_at.nil? && voter.can_vote?(election)
-				voter.generate_code
+		Voter.transaction do 
+			Voter.all.each do |voter|
+				if voter.code_generated_at.nil? && voter.can_vote?(election) && !voter.email.blank?
+					voter.generate_code
+				end
+			end
+		end
+	end
+
+	def self.associate_with_election(election)
+		Voter.transaction do 
+			Voter.all.each do |voter|
+				voter.elections << election
 			end
 		end
 	end

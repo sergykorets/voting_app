@@ -12,7 +12,7 @@
 class VotingsController < PublicController
 
 	before_action :set_election
-	#before_action :check_election_votability
+	before_action :check_election_votability
 	before_action :set_voting
 
 	def new
