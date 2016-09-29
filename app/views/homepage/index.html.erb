@@ -1,1 +1,5 @@
-<%= render partial: "introduction" %>
+<% if @election.resultable? %>
+	<%= render partial: "results/results" %>
+<% else %>
+	<%= render partial: "introduction/introduction" %>
+<% end %>
