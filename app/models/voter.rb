@@ -101,39 +101,38 @@ class Voter < ActiveRecord::Base
 		return true
 	end
 
-	def self.generate_missing_codes(election)
+	def self.generate_missing_codes(election, start_index = 0)
 		limit = 80
-		rest = 0
+		result = nil
 		Voter.transaction do 
-			Voter.all.each do |voter|
-				if voter.code_generated_at.nil? && voter.can_vote?(election)
-					if limit > 0
+			Voter.all.order(id: :asc).each_with_index do |voter, index|
+				if index >= start_index && limit > 0
+					if voter.code_generated_at.nil? && voter.can_vote?(election)
 						voter.generate_code
 						limit -= 1
-					else
-						rest += 1
 					end
+					result = index + 1
 				end
 			end
 		end
 	end
 
-	def self.remind_voting_possibility(election)
+	def self.remind_voting_possibility(election, start_index = 0)
 		limit = 80
-		rest = 0
+		result = nil
 		Voter.transaction do 
-			Voter.all.each do |voter|
-				if voter.code_generated_at.nil? && voter.can_vote?(election) && !voter.already_voted?(election)
-					if limit > 0
-						RicNotification.notify([:voter_remind, voter, voter.code], voter)
+			Voter.all.order(id: :asc).each_with_index do |voter, index|
+				if index >= start_index && limit > 0
+					if voter.code_generated_at.nil? && voter.can_vote?(election) && !voter.already_voted?(election)
+						#RicNotification.notify([:voter_remind, voter, voter.code], voter)
+						puts voter.id.inspect
 						limit -= 1
-					else
-						rest +=1
 					end
+					result = index + 1
 				end
 			end
 		end
-		return rest
+		return result
 	end
 
 	def self.associate_with_election(election)
