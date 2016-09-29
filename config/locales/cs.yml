@@ -92,7 +92,7 @@ cs:
         key_values:
           voter_welcome: Uvítání nového voliče
           voter_new_code: Nový kód voliče
-          voter_reminder: Připomenutí voleb
+          voter_remind: Připomenutí voleb
     notices:
       models:
         voter:
