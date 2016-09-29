@@ -117,7 +117,11 @@ protected
 		current_params["steps"].each do |step, candidate_ids|
 			@voting.candidate_ids[step] = candidate_ids.map{ |candidate_id| candidate_id.to_i }
 		end
-		@voting.code = current_params["code"].gsub(/\s/, "").downcase
+		if current_params["code"]
+			@voting.code = current_params["code"].gsub(/\s/, "").downcase 
+		else
+			@voting.code = nil
+		end
 
 	end
 
