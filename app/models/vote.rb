@@ -36,4 +36,12 @@ class Vote < ActiveRecord::Base
 		]
 	end
 
+	# *************************************************************************
+	# Votes recalc
+	# *************************************************************************
+
+	after_destroy do
+		self.election_part.recalculate_votes	
+	end
+
 end

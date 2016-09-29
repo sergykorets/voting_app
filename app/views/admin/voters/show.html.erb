@@ -2,11 +2,18 @@
 	<%= rug_show_table_for(@voter, { 
 		name: :name,
 		email: :string,
-		code_generated_at: :datetime
+		code_generated_at: :datetime,
+		code: :string
 	}) %>
 	<%= rug_index_table_for(@voter.elections.order(name: :asc), { 
 		name: :string,
 	}, paths: {
 		show: lambda { |election| main_app.admin_election_path(election) }, 
+	}, summary: true ) %>
+	<%= rug_index_table_for(@voter.votes.order(created_at: :desc), { 
+		created_at: :datetime,
+		election_part: { type: :belongs_to, label: :name },
+	}, paths: {
+		destroy: "main_app.admin_vote_path", 
 	}, summary: true ) %>
 <% end %>

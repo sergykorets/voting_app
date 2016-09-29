@@ -63,6 +63,8 @@ Rails.application.routes.draw do
 				put "generate_code"
 			end
 		end	
+
+		resources :votes, only: [:destroy]
 				
 	end
 

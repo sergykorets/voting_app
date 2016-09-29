@@ -48,6 +48,9 @@ cs:
 
   activerecord:
     attributes:
+      vote:
+        created_at: Vytvořeno
+        election_part: Volební oblast
       voter:
         name: Jméno
         name_lastname: Příjmení
@@ -95,6 +98,8 @@ cs:
           voter_remind: Připomenutí voleb
     notices:
       models:
+        vote:
+          destroy: Hlas byl úspěšně smazán.
         voter:
           create: Volič byl úspěšně vytvořen.
           update: Volič byl úspěšně upraven.
