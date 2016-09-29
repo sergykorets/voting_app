@@ -124,8 +124,7 @@ class Voter < ActiveRecord::Base
 			Voter.all.order(id: :asc).each_with_index do |voter, index|
 				if index >= start_index && limit > 0
 					if !voter.code_generated_at.nil? && voter.can_vote?(election) && !voter.already_voted?(election)
-						#RicNotification.notify([:voter_remind, voter, voter.code], voter)
-						puts voter.id.inspect
+						RicNotification.notify([:voter_remind, voter, voter.code], voter)
 						limit -= 1
 					end
 					result = index + 1
