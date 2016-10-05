@@ -73,4 +73,8 @@ class ElectionPart < ActiveRecord::Base
 		end
 	end
 
+	def votes_count
+		self.votes.count
+	end
+
 end

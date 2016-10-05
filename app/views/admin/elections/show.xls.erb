@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  
+
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Celkem vygenerovaných kódů</Data></Cell>
+        <Cell><Data ss:Type="String">Celkem použitých kódů pro hlasování</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= @election.voters_count %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= @election.votes_count %></Data></Cell>
+      </Row>
+    </Table>
+  </Worksheet>
+
+  <% @election.election_parts.order(id: :asc).each do |election_part| %>
+
+  <Worksheet ss:Name="<%= election_part.name %>">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Kandidát</Data></Cell>
+        <Cell><Data ss:Type="String">Celkem hlasů</Data></Cell>
+      </Row>
+    <% election_part.candidate_participations.order(votes: :desc, position: :asc).each do |candidate_participation| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= candidate_participation.candidate.name_formatted %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= candidate_participation.votes %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+
+  <% end %>
+
+</Workbook>

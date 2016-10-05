@@ -4,8 +4,8 @@
 		content: :text,
 		votable_from: :date,
 		votable_to: :date,
-		invitation_sent_at: :datetime,
-		results_sent_at: :datetime
+		voters_count: :integer,
+		votes_count: :integer,
 	}) %>
 	<%= rug_index_table_for(@election.election_parts.order(name: :asc), { 
 		name: :string,

@@ -86,6 +86,8 @@ cs:
         votable_to: Do
         invitation_sent_at: Pozvánka poslána
         results_sent_at: Výsledky poslány
+        voters_count: Počet voličů
+        votes_count: Počet hlasů
       election_part:
         election: Volby
         election_id: Volby

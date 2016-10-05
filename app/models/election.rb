@@ -101,4 +101,16 @@ class Election < ActiveRecord::Base
 		end
 	end
 
+	def voters_count
+		self.voters.count
+	end
+
+	def votes_count
+		result = 0
+		self.election_parts.each do |election_part|
+			result = election_part.votes_count
+		end
+		return result
+	end
+
 end
